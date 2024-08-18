@@ -1,0 +1,30 @@
+title: Paul-Andrei Sava
+description: Hi, my name is Paul and I am a Research Assistant at Fraunhofer AISEC in Garching bei München, Germany.
+logo: /assets/img/profile.jpg  # Add your profile picture to this path
+
+# Social links
+github_username: paulsava
+linkedin_username: paul-sava
+twitter_username: _psava
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
+
+# Navigation
+header_pages:
+  - publications.md
+  - projects.md
+  - blog.md
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
