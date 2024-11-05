@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Noto Sans";
   font-weight: 400;
@@ -579,6 +580,18 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.92)), repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(57, 255, 20, 0.05) 3px, rgba(57, 255, 20, 0.05) 4px);
+  animation: matrixBg 20s linear infinite;
+  z-index: -1;
 }
 
 .wrapper {
@@ -594,6 +607,7 @@ body {
   display: flex;
   flex-direction: column;
   left: 0;
+  background: linear-gradient(135deg, #1E1E1E 0%, #111111 100%);
 }
 
 .sidebar-content {
@@ -613,9 +627,30 @@ body {
   width: calc(100% - 220px);
   text-align: justify;
 }
+.content p, .content pre, .content blockquote {
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.3s ease;
+}
+.content p:hover, .content pre:hover, .content blockquote:hover {
+  transform: translateY(-5px) rotate(0.5deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
 h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
+  position: relative;
+}
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #bb86fc;
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after {
+  width: 100px;
 }
 
 a {
@@ -634,6 +669,17 @@ a:hover {
   margin: 10px auto;
   display: block;
   border: 3px solid #bb86fc;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: floatAndGlow 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #00f7ff);
+}
+.profile-picture:hover {
+  transform: scale(1.1) rotate(360deg);
+  filter: drop-shadow(0 0 15px #ff61d8);
+  animation: spinRainbow 2s linear infinite;
+  border-width: 5px;
+  border-style: solid;
+  border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff) 1;
 }
 
 .bio {
@@ -655,15 +701,38 @@ a:hover {
   justify-content: flex-start;
   padding: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  position: relative;
+  overflow: hidden;
 }
 .main-nav a i {
   margin-right: 8px;
   width: 20px;
   text-align: center;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .main-nav a:hover {
+  transform: translateX(8px);
   background-color: rgba(187, 134, 252, 0.2);
+  border-radius: 15px 0 0 15px;
+}
+.main-nav a:hover i {
+  transform: scale(1.2) rotate(10deg);
+  animation: bounce 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) infinite alternate;
+  color: #ff61d8;
+}
+.main-nav a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+.main-nav a:hover::before {
+  left: 100%;
 }
 
 /* Grid layout for smaller screens */
@@ -687,9 +756,17 @@ a:hover {
 .social-links a {
   font-size: 22px;
   margin: 0 8px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
 }
 .social-links a:hover {
-  color: #3700b3;
+  transform: translateY(-3px) scale(1.2);
+  text-shadow: 0 3px 10px rgba(187, 134, 252, 0.3);
+}
+.social-links a:hover::before {
+  content: "✨";
+  position: absolute;
+  animation: particle 0.5s ease-out forwards;
 }
 
 footer {
@@ -778,6 +855,231 @@ footer {
     box-sizing: border-box;
     max-width: 100%;
   }
+}
+/* Add a fun scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bb86fc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3700b3;
+}
+
+.duck {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: duckWaddle 0.5s infinite alternate;
+}
+.duck::before {
+  content: "🦆";
+  font-size: 24px;
+  position: absolute;
+  transform-origin: center;
+  filter: hue-rotate(0deg);
+  animation: rainbowDuck 2s linear infinite;
+}
+.duck.angry::before {
+  content: "🦢";
+  animation: angryDuck 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes gridFloat {
+  0% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(15deg) rotateY(5deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+  }
+}
+@keyframes duckWaddle {
+  0% {
+    transform: rotate(-5deg) translateY(0);
+  }
+  100% {
+    transform: rotate(5deg) translateY(-5px);
+  }
+}
+.main-nav a {
+  position: relative;
+  overflow: hidden;
+}
+.main-nav a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+.main-nav a:hover::before {
+  left: 100%;
+}
+.main-nav a:hover i {
+  animation: bounce 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) infinite alternate;
+  color: #ff61d8;
+}
+
+@keyframes floatAndGlow {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+@keyframes bounce {
+  from {
+    transform: scale(1) rotate(0);
+  }
+  to {
+    transform: scale(1.5) rotate(15deg);
+  }
+}
+@keyframes matrixBg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
+}
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+h1:hover, h2:hover, h3:hover {
+  animation: glowPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 97, 216, 0.8);
+  }
+}
+.social-links a {
+  position: relative;
+}
+.social-links a:hover::before {
+  content: "✨";
+  position: absolute;
+  animation: particle 0.5s ease-out forwards;
+}
+
+@keyframes particle {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-5px, -20px) scale(1.5);
+    opacity: 0;
+  }
+}
+.profile-picture:hover {
+  animation: spinRainbow 2s linear infinite;
+  border-width: 5px;
+  border-style: solid;
+  border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff) 1;
+}
+
+h1:hover, h2:hover, h3:hover {
+  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+h1:hover::before, h2:hover::before, h3:hover::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 2px 0 #ff61d8;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.duck::before {
+  content: "🦆";
+  font-size: 24px;
+  filter: hue-rotate(0deg);
+  animation: rainbowDuck 2s linear infinite;
+}
+.duck.angry::before {
+  content: "🦢";
+  animation: angryDuck 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spinRainbow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes rainbowDuck {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes angryDuck {
+  0% {
+    transform: scale(1.5) rotate(-15deg);
+  }
+  50% {
+    transform: scale(2) rotate(15deg);
+  }
+  100% {
+    transform: scale(1.5) rotate(-15deg);
+  }
+}
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
 }
 
 /*# sourceMappingURL=style.css.map */

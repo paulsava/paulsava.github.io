@@ -12,6 +12,24 @@ $link-color: #bb86fc;
 $link-hover-color: #3700b3;
 $border-color: #333333;
 
+// After the existing variables, add these fun ones
+$bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$wiggle-timing: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+// Add these new variables
+$duck-color: #FFD700;
+$glow-color: rgba(187, 134, 252, 0.2);
+
+// Add these fun variables
+$neon-pink: #ff61d8;
+$neon-blue: #00f7ff;
+$neon-green: #39ff14;
+
+// Add these new variables
+$rainbow-gradient: linear-gradient(90deg, 
+  #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+$glitch-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 body {
   background-color: $background-color;
   color: $text-color;
@@ -19,6 +37,25 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(rgba($background-color, 0.92), rgba($background-color, 0.92)),
+      repeating-linear-gradient(90deg, 
+        transparent 0px,
+        transparent 3px,
+        rgba($neon-green, 0.05) 3px,
+        rgba($neon-green, 0.05) 4px);
+    animation: matrixBg 20s linear infinite;
+    z-index: -1;
+  }
 }
 
 .wrapper {
@@ -34,6 +71,7 @@ body {
   display: flex;
   flex-direction: column;
   left: 0;
+  background: linear-gradient(135deg, $sidebar-background 0%, darken($sidebar-background, 5%) 100%);
 }
 
 .sidebar-content {
@@ -52,10 +90,35 @@ body {
   max-width: 1200px;
   width: calc(100% - 220px);
   text-align: justify;
+  
+  p, pre, blockquote {
+    transition: transform 0.3s $bounce-timing, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px) rotate(0.5deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: $heading-color;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: $link-color;
+    transition: width 0.3s $bounce-timing;
+  }
+
+  &:hover::after {
+    width: 100px;
+  }
 }
 
 a {
@@ -75,6 +138,18 @@ a {
   margin: 10px auto;
   display: block;
   border: 3px solid $link-color;
+  transition: transform 0.3s $bounce-timing;
+  animation: floatAndGlow 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px $neon-blue);
+  
+  &:hover {
+    transform: scale(1.1) rotate(360deg);
+    filter: drop-shadow(0 0 15px $neon-pink);
+    animation: spinRainbow 2s linear infinite;
+    border-width: 5px;
+    border-style: solid;
+    border-image: $rainbow-gradient 1;
+  }
 }
 
 .bio {
@@ -96,16 +171,47 @@ a {
   justify-content: flex-start;
   padding: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
-
+  transition: all 0.3s $wiggle-timing;
+  position: relative;
+  overflow: hidden;
+  
   i {
     margin-right: 8px;
     width: 20px;
     text-align: center;
+    transition: transform 0.3s $bounce-timing;
   }
 
   &:hover {
+    transform: translateX(8px);
     background-color: rgba($link-color, 0.2);
+    border-radius: 15px 0 0 15px;
+  }
+
+  &:hover i {
+    transform: scale(1.2) rotate(10deg);
+    animation: bounce 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) infinite alternate;
+    color: $neon-pink;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($neon-blue, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
   }
 }
 
@@ -132,9 +238,18 @@ a {
   a {
     font-size: 22px;
     margin: 0 8px;
-
+    transition: all 0.3s $bounce-timing;
+    position: relative;
+    
     &:hover {
-      color: $link-hover-color;
+      transform: translateY(-3px) scale(1.2);
+      text-shadow: 0 3px 10px rgba($link-color, 0.3);
+    }
+
+    &:hover::before {
+      content: '✨';
+      position: absolute;
+      animation: particle 0.5s ease-out forwards;
     }
   }
 }
@@ -241,4 +356,234 @@ footer {
     box-sizing: border-box;
     max-width: 100%;
   }
+}
+
+/* Add a fun scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $background-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $link-color;
+  border-radius: 5px;
+
+  &:hover {
+    background: $link-hover-color;
+  }
+}
+
+// Add this fun duck that follows the cursor
+.duck {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s $bounce-timing;
+  animation: duckWaddle 0.5s infinite alternate;
+  
+  &::before {
+    content: '🦆';
+    font-size: 24px;
+    position: absolute;
+    transform-origin: center;
+    filter: hue-rotate(0deg);
+    animation: rainbowDuck 2s linear infinite;
+  }
+  
+  &.angry::before {
+    content: '🦢';
+    animation: angryDuck 0.5s $bounce-timing infinite;
+  }
+}
+
+// Add fun animations
+@keyframes gridFloat {
+  0% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(15deg) rotateY(5deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+  }
+}
+
+@keyframes duckWaddle {
+  0% {
+    transform: rotate(-5deg) translateY(0);
+  }
+  100% {
+    transform: rotate(5deg) translateY(-5px);
+  }
+}
+
+// Add this JavaScript to make the duck follow the cursor
+
+// Add floating elements
+.main-nav a {
+  // ... existing styles ...
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($neon-blue, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:hover i {
+    animation: bounce 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) infinite alternate;
+    color: $neon-pink;
+  }
+}
+
+// Add some fun animations
+@keyframes floatAndGlow {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes bounce {
+  from { transform: scale(1) rotate(0); }
+  to { transform: scale(1.5) rotate(15deg); }
+}
+
+@keyframes matrixBg {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+}
+
+// Add glowing text effect
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba($neon-blue, 0.5);
+  
+  &:hover {
+    animation: glowPulse 1s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes glowPulse {
+  from { text-shadow: 0 0 10px rgba($neon-blue, 0.5); }
+  to { text-shadow: 0 0 20px rgba($neon-pink, 0.8); }
+}
+
+// Add particle effect on hover for links
+.social-links a {
+  position: relative;
+  
+  &:hover::before {
+    content: '✨';
+    position: absolute;
+    animation: particle 0.5s ease-out forwards;
+  }
+}
+
+@keyframes particle {
+  0% { 
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  100% { 
+    transform: translate(random(20) - 10px, -20px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+// Add rainbow effect to profile picture
+.profile-picture {
+  // ... existing styles ...
+  &:hover {
+    animation: spinRainbow 2s linear infinite;
+    border-width: 5px;
+    border-style: solid;
+    border-image: $rainbow-gradient 1;
+  }
+}
+
+// Add glitch effect to headings
+h1, h2, h3 {
+  &:hover {
+    animation: glitch 0.5s $glitch-timing infinite;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: 2px 0 $neon-pink;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+  }
+}
+
+// Make the duck more interactive
+.duck {
+  &::before {
+    content: '🦆';
+    font-size: 24px;
+    filter: hue-rotate(0deg);
+    animation: rainbowDuck 2s linear infinite;
+  }
+  
+  &.angry::before {
+    content: '🦢';
+    animation: angryDuck 0.5s $bounce-timing infinite;
+  }
+}
+
+// Add these fun animations
+@keyframes spinRainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+@keyframes rainbowDuck {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes angryDuck {
+  0% { transform: scale(1.5) rotate(-15deg); }
+  50% { transform: scale(2) rotate(15deg); }
+  100% { transform: scale(1.5) rotate(-15deg); }
+}
+
+// Add matrix rain effect
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
 }
