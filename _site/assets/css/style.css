@@ -1043,7 +1043,7 @@ h1:hover, h2:hover, h3:hover {
     opacity: 1;
   }
   100% {
-    transform: translate(1px, -20px) scale(1.5);
+    transform: translate(-4px, -20px) scale(1.5);
     opacity: 0;
   }
 }
