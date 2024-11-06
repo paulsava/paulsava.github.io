@@ -573,26 +573,6 @@ footer {
   }
 }
 /* Dark theme colors */
-.following-duck {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  font-size: 32px;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-  filter: drop-shadow(0 0 2px rgba(255, 97, 216, 0.5));
-}
-.following-duck.running {
-  animation: duckRun 0.3s linear infinite;
-}
-.following-duck.hyper {
-  animation: crazyDuck 0.2s linear infinite;
-  filter: hue-rotate(0deg);
-}
-.following-duck.rainbow {
-  animation: rainbowDuck 0.5s linear infinite;
-}
-
 body {
   background-color: #121212;
   color: #e0e0e0;
@@ -601,22 +581,6 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  cursor: none;
-}
-body * {
-  cursor: none !important;
-}
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.92)), repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(0, 255, 65, 0.05) 3px, rgba(0, 255, 65, 0.05) 4px);
-  animation: matrixScroll 20s linear infinite;
-  z-index: -1;
-  opacity: 0.05;
 }
 
 @keyframes matrixScroll {
@@ -1043,7 +1007,7 @@ h1:hover, h2:hover, h3:hover {
     opacity: 1;
   }
   100% {
-    transform: translate(-4px, -20px) scale(1.5);
+    transform: translate(8px, -20px) scale(1.5);
     opacity: 0;
   }
 }
