@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Noto Sans";
   font-weight: 400;
@@ -624,9 +625,9 @@ body {
 
 .content {
   margin-left: 220px;
-  margin-right: 0;
+  margin-right: 20px;
   padding: 0;
-  width: calc(100% - 220px);
+  width: calc(100% - 240px);
   text-align: justify;
   margin-top: 0;
   position: relative;
@@ -987,7 +988,7 @@ h1:hover, h2:hover, h3:hover {
     opacity: 1;
   }
   100% {
-    transform: translate(-7px, -20px) scale(1.5);
+    transform: translate(8px, -20px) scale(1.5);
     opacity: 0;
   }
 }
@@ -1577,7 +1578,7 @@ body::after {
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   padding: 40px;
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
   margin: 0 auto;
   max-width: 1400px;
 }
@@ -1671,6 +1672,12 @@ body::after {
   }
 }
 @media screen and (max-width: 768px) {
+  .content {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 0;
+  }
   .projects-grid {
     grid-template-columns: 1fr;
     width: calc(100% - 30px);
@@ -2214,3 +2221,5 @@ body::after {
     padding-bottom: 8px;
   }
 }
+
+/*# sourceMappingURL=style.css.map */
