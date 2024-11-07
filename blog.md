@@ -27,7 +27,7 @@ class: blog-page
       </p>
       
       <div class="post-footer">
-        <a href="/home-coffee-bar" class="read-more">Continue reading →</a>
+        <a href="{{ site.baseurl }}/blog/home-coffee-bar" class="read-more">Continue reading →</a>
       </div>
     </div>
   </article>
