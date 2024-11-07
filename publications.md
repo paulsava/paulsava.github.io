@@ -12,7 +12,7 @@ class: publications-page
   </div>
 
   <!-- Publication for 2022 -->
-  <div class="publication-item" data-date="October 15, 2022">
+  <div class="publication-item" data-date="November 7, 2022">
     <div class="paper-info">
       <h3>Assessing the Impact of Transformations on Physical Adversarial Attacks</h3>
       

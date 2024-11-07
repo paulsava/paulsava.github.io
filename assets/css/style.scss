@@ -1127,6 +1127,7 @@ $particle-color: rgba(187, 134, 252, 0.15);
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
   }
   
   h3 {
@@ -1165,24 +1166,10 @@ $particle-color: rgba(187, 134, 252, 0.15);
   }
 
   .project-link {
-    margin-top: auto; // Push link to bottom
-    display: inline-block;
-  }
-
-  &:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: rgba($neon-pink, 0.4);
-    box-shadow: 
-      inset 0 0 30px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba($neon-blue, 0.05);
-    background: rgba(30, 30, 40, 0.95);
-  }
-
-  // Add these new styles inside .project-card
-  .project-link {
     display: inline-block;
     padding: 8px 16px;
-    margin-top: 10px;
+    margin-top: auto;
+    margin-bottom: 10px;
     color: $neon-blue;
     border: 1px solid $neon-blue;
     border-radius: 20px;
@@ -1193,6 +1180,15 @@ $particle-color: rgba(187, 134, 252, 0.15);
       background: rgba($neon-blue, 0.1);
       transform: translateX(5px);
     }
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba($neon-pink, 0.4);
+    box-shadow: 
+      inset 0 0 30px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba($neon-blue, 0.05);
+    background: rgba(30, 30, 40, 0.95);
   }
 }
 
@@ -1820,11 +1816,16 @@ $particle-color: rgba(187, 134, 252, 0.15);
     .project-link {
       padding: 6px 12px;
       font-size: 0.9em;
-      margin-top: 8px;
+      margin-top: auto;
+      margin-bottom: 8px;
       display: inline-block;
       position: relative;
       bottom: auto;
       right: auto;
+    }
+
+    .card-content {
+      padding-bottom: 8px;
     }
   }
 }
