@@ -1177,6 +1177,23 @@ $particle-color: rgba(187, 134, 252, 0.15);
       0 0 20px rgba($neon-blue, 0.05);
     background: rgba(30, 30, 40, 0.95);
   }
+
+  // Add these new styles inside .project-card
+  .project-link {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 10px;
+    color: $neon-blue;
+    border: 1px solid $neon-blue;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    
+    &:hover {
+      background: rgba($neon-blue, 0.1);
+      transform: translateX(5px);
+    }
+  }
 }
 
 // Responsive adjustments
@@ -1765,6 +1782,49 @@ $particle-color: rgba(187, 134, 252, 0.15);
       background: $neon-blue;
       margin: 15px auto 0;
       box-shadow: 0 0 10px rgba($neon-blue, 0.5);
+    }
+  }
+}
+
+// Update the media queries for better mobile responsiveness
+@media screen and (max-width: 480px) {
+  .projects-grid {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .project-card {
+    height: auto;
+    min-height: 200px;
+    padding: 12px;
+    
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      font-size: 0.9em;
+      margin: 8px 0;
+    }
+    
+    .project-tags {
+      margin: 8px 0;
+      
+      .tag {
+        padding: 3px 8px;
+        font-size: 0.8em;
+      }
+    }
+    
+    .project-link {
+      padding: 6px 12px;
+      font-size: 0.9em;
+      margin-top: 8px;
+      display: inline-block;
+      position: relative;
+      bottom: auto;
+      right: auto;
     }
   }
 }
