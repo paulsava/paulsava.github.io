@@ -1571,3 +1571,200 @@ $particle-color: rgba(187, 134, 252, 0.15);
     width: 100%;
   }
 }
+
+// Add these blog-specific styles
+.blog-posts {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-post {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($neon-blue, 0.15);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba($neon-pink, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.post-header {
+  margin-bottom: 25px;
+  
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: $neon-blue;
+    text-shadow: 0 0 10px rgba($neon-blue, 0.2);
+  }
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9em;
+  color: $text-color;
+  
+  .post-date {
+    color: $neon-pink;
+  }
+  
+  .post-tags {
+    display: flex;
+    gap: 8px;
+    
+    .tag {
+      background: rgba($neon-pink, 0.1);
+      color: $neon-pink;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.85em;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba($neon-pink, 0.2);
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+.post-content {
+  line-height: 1.8;
+  
+  h3 {
+    color: $neon-blue;
+    margin: 25px 0 15px;
+    font-size: 1.4em;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    margin: 20px 0;
+    padding-left: 20px;
+    
+    li {
+      margin-bottom: 10px;
+      position: relative;
+      
+      &::before {
+        content: '→';
+        color: $neon-pink;
+        position: absolute;
+        left: -20px;
+      }
+    }
+  }
+}
+
+.post-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba($neon-blue, 0.2);
+  
+  .read-more {
+    color: $neon-pink;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: lighten($neon-pink, 10%);
+      text-shadow: 0 0 10px rgba($neon-pink, 0.3);
+      
+      &::after {
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+// Add these to your existing media queries
+@media (max-width: 768px) {
+  .blog-posts {
+    padding: 15px;
+  }
+  
+  .blog-post {
+    padding: 20px;
+  }
+  
+  .post-header h2 {
+    font-size: 1.5em;
+  }
+}
+
+// Add these styles for full blog posts
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.blog-post.full {
+  .post-header {
+    h1 {
+      font-size: 2.5em;
+      color: $neon-blue;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba($neon-blue, 0.2);
+    }
+  }
+  
+  .post-content {
+    h3 {
+      color: $neon-blue;
+      margin: 40px 0 20px;
+      font-size: 1.6em;
+    }
+    
+    p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    ul {
+      margin: 20px 0;
+      padding-left: 25px;
+      
+      li {
+        margin-bottom: 15px;
+        
+        strong {
+          color: $neon-pink;
+        }
+      }
+    }
+  }
+}
+
+// Update the page title styles for blog, projects, and publications
+.blog-page, .projects-page, .publications-page {
+  h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: $heading-color;
+    text-shadow: 0 0 10px rgba($neon-blue, 0.3);
+    
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: $neon-blue;
+      margin: 15px auto 0;
+      box-shadow: 0 0 10px rgba($neon-blue, 0.5);
+    }
+  }
+}

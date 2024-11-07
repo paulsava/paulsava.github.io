@@ -1,8 +1,9 @@
 ---
-layout: page
-title: Projects
-permalink: /projects/
+layout: default
+class: projects-page
 ---
+
+# Projects
 
 <div class="projects-grid">
   <div class="project-card">

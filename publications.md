@@ -1,8 +1,9 @@
 ---
-layout: page
-title: Publications
-permalink: /publications/
+layout: default
+class: publications-page
 ---
+
+# Publications
 
 <div class="publications-timeline">
   <!-- Dynamically add the current year -->
