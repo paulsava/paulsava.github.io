@@ -1,4 +1,4 @@
-title: Paul-Andrei Sava
+title: Paul Sava
 description: Hi, my name is Paul and I am a Research Assistant at Fraunhofer AISEC in Garching bei München, Germany.
 logo: /assets/img/profile.jpg  # Add your profile picture to this path
 
@@ -28,3 +28,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+# Permalink structure
+permalink: /:year/:month/:day/:title.html
