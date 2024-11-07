@@ -54,6 +54,11 @@ body {
 .wrapper {
   display: flex;
   min-height: 100vh;
+  margin-right: 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  padding-top: 0;
 }
 
 .sidebar {
@@ -65,6 +70,7 @@ body {
   flex-direction: column;
   left: 0;
   background: linear-gradient(135deg, $sidebar-background 0%, darken($sidebar-background, 5%) 100%);
+  z-index: 10;
 }
 
 .sidebar-content {
@@ -79,39 +85,17 @@ body {
 
 .content {
   margin-left: 220px;
-  padding: 40px;
-  max-width: 800px;
+  margin-right: 0;
+  padding: 0;
   width: calc(100% - 220px);
   text-align: justify;
+  margin-top: 0;
+  position: relative;
   
   p, pre, blockquote {
-    transition: all 0.3s $bounce-timing;
-    position: relative;
     padding: 15px;
     margin: 15px 0;
     border-radius: 5px;
-    
-    &:hover {
-      transform: translateX(5px);
-      background: rgba($matrix-green, 0.03);
-      box-shadow: 
-        -2px 0 10px rgba($neon-pink, 0.05),
-        0 0 5px rgba($neon-blue, 0.05);
-    }
-    
-    &::before {
-      content: '>';
-      position: absolute;
-      left: -20px;
-      color: rgba($neon-pink, 0.5);
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    
-    &:hover::before {
-      opacity: 0.5;
-      left: -15px;
-    }
   }
 }
 
@@ -120,12 +104,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   text-shadow: 0 0 5px rgba($neon-blue, 0.3);
   
-  &:hover {
-    transform: translateX(5px);
-    text-shadow: 
-      0 0 5px rgba($neon-pink, 0.3),
-      0 0 10px rgba($neon-blue, 0.2);
-  }
+  // &:hover {
+  //   transform: translateX(5px);
+  //   text-shadow: 
+  //     0 0 5px rgba($neon-pink, 0.3),
+  //     0 0 10px rgba($neon-blue, 0.2);
+  // }
 }
 
 a {
@@ -282,12 +266,12 @@ footer {
     color: $heading-color;
     text-shadow: 0 0 5px rgba($neon-blue, 0.3);
     
-    &:hover {
-      transform: translateX(5px);
-      text-shadow: 
-        0 0 5px rgba($neon-pink, 0.3),
-        0 0 10px rgba($neon-blue, 0.2);
-    }
+    // &:hover {
+    //   transform: translateX(5px);
+    //   text-shadow: 
+    //     0 0 5px rgba($neon-pink, 0.3),
+    //     0 0 10px rgba($neon-blue, 0.2);
+    // }
   }
 
   p {
@@ -541,20 +525,7 @@ h1, h2, h3 {
   }
 }
 
-// Add glitch effect to headings
-h1, h2, h3 {
-  &:hover {
-    animation: glitch 0.5s $glitch-timing infinite;
-    &::before {
-      content: attr(data-text);
-      position: absolute;
-      left: -2px;
-      text-shadow: 2px 0 $neon-pink;
-      clip: rect(44px, 450px, 56px, 0);
-      animation: glitch-anim 5s infinite linear alternate-reverse;
-    }
-  }
-}
+
 
 // Make the duck more interactive
 .duck {
@@ -811,62 +782,8 @@ h1, h2, h3 {
 
 // Add these new effects to your existing style.scss
 
-// Add glitch effect to main title
-h1 {
-  position: relative;
-  
-  &::before, &::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip: rect(0, 0, 0, 0);
-  }
-  
-  &::before {
-    left: 2px;
-    text-shadow: -1px 0 $neon-pink;
-    animation: glitch-1 2s infinite linear alternate-reverse;
-  }
-  
-  &::after {
-    left: -2px;
-    text-shadow: 1px 0 $neon-blue;
-    animation: glitch-2 3s infinite linear alternate-reverse;
-  }
-}
 
-// Add hover effect for content blocks
-.content {
-  p, pre, blockquote {
-    transition: all 0.3s $bounce-timing;
-    position: relative;
-    
-    &:hover {
-      transform: translateX(10px) scale(1.01);
-      background: rgba($matrix-green, 0.05);
-      box-shadow: 
-        -5px 0 15px rgba($neon-pink, 0.1),
-        0 0 10px rgba($neon-blue, 0.1);
-    }
-    
-    &::before {
-      content: '>';
-      position: absolute;
-      left: -20px;
-      color: $neon-pink;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    
-    &:hover::before {
-      opacity: 1;
-      left: -15px;
-    }
-  }
-}
+
 
 // Add scanline effect
 body::after {
@@ -936,18 +853,6 @@ body::after {
   }
 }
 
-// Add new animations
-@keyframes glitch-1 {
-  0% { clip: rect(20px, 1000px, 51px, 0); }
-  50% { clip: rect(12px, 1000px, 59px, 0); }
-  100% { clip: rect(25px, 1000px, 32px, 0); }
-}
-
-@keyframes glitch-2 {
-  0% { clip: rect(25px, 1000px, 32px, 0); }
-  50% { clip: rect(12px, 1000px, 59px, 0); }
-  100% { clip: rect(20px, 1000px, 51px, 0); }
-}
 
 @keyframes scanline {
   0% { transform: translateY(0); }
@@ -985,4 +890,684 @@ body::after {
 @keyframes matrixRain {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
+}
+
+// Terminal styles
+.terminal-container {
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.terminal {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid $matrix-green;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: rgba($matrix-green, 0.1);
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba($matrix-green, 0.3);
+  
+  .terminal-title {
+    color: $matrix-green;
+    font-size: 0.9em;
+  }
+}
+
+.terminal-content {
+  padding: 15px;
+  
+  .line {
+    color: $matrix-green;
+    margin: 8px 0;
+    font-size: 0.9em;
+    opacity: 0;
+    animation: typeLine 0.1s ease forwards;
+    
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.2}s;
+      }
+    }
+    
+    &.error { color: #ff5f56; }
+    &.warning { color: #ffbd2e; }
+    
+    &.blink::after {
+      content: '█';
+      animation: blink 1s step-end infinite;
+    }
+  }
+}
+
+@keyframes typeLine {
+  from { opacity: 0; transform: translateX(-5px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+// 3D Bookshelf styles
+.bookshelf {
+  margin: 40px 0;
+  padding: 20px;
+  background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+  border-radius: 8px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+.shelf {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.book {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(90deg, #2a2a2a, #1a1a1a);
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s $bounce-timing;
+  border-left: 4px solid $neon-pink;
+  overflow: hidden;
+  
+  .spine {
+    width: 200px;
+    z-index: 1;
+    transition: transform 0.3s $bounce-timing;
+    
+    .spine-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 8px;
+      text-shadow: 0 0 5px rgba($neon-pink, 0.5);
+    }
+    
+    .spine-year {
+      font-size: 0.9em;
+      color: rgba(white, 0.7);
+    }
+  }
+  
+  .cover {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: calc(100% - 220px);
+    height: 100%;
+    background: rgba($background-color, 0.95);
+    padding: 20px;
+    opacity: 0;
+    transition: all 0.3s $bounce-timing;
+    border-left: 1px solid rgba($neon-blue, 0.3);
+    backdrop-filter: blur(5px);
+    
+    h3 {
+      color: $neon-pink;
+      margin-bottom: 10px;
+    }
+    
+    .book-subtitle {
+      color: $neon-blue;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+    
+    .book-content {
+      color: $text-color;
+      font-size: 0.9em;
+      line-height: 1.6;
+      
+      ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+    }
+    
+    .book-footer {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba($neon-blue, 0.2);
+      
+      a {
+        color: $neon-pink;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: $neon-blue;
+          text-shadow: 0 0 10px rgba($neon-blue, 0.5);
+        }
+      }
+    }
+  }
+  
+  &:hover {
+    transform: translateX(-20px);
+    background: linear-gradient(90deg, #2a2a2a, #222);
+    box-shadow: 
+      0 5px 15px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba($neon-pink, 0.1);
+    
+    .spine {
+      transform: translateX(10px);
+    }
+    
+    .cover {
+      left: 220px;
+      opacity: 1;
+      box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba($neon-blue, 0.1);
+    }
+  }
+}
+
+// Generate different colors for each book
+@for $i from 1 through 3 {
+  .book:nth-child(#{$i}) {
+    border-left-color: adjust-hue($neon-pink, $i * 120deg);
+    
+    .spine-title {
+      text-shadow: 0 0 5px rgba(adjust-hue($neon-pink, $i * 120deg), 0.5);
+    }
+  }
+}
+
+// Add these new variables at the top
+$card-bg: rgba(30, 30, 30, 0.6);
+$card-border: rgba(187, 134, 252, 0.1);
+$particle-color: rgba(187, 134, 252, 0.15);
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 40px;
+  width: calc(100% - 100px);
+  margin: 0;
+}
+
+.project-card {
+  position: relative;
+  background: rgba(25, 25, 30, 0.8);
+  border: 1px solid rgba($neon-blue, 0.15);
+  border-radius: 12px;
+  padding: 15px;
+  height: 250px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s $bounce-timing;
+  overflow: hidden;
+  
+  canvas.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: $neon-blue;
+    transition: color 0.3s ease;
+  }
+
+  p {
+    color: $text-color;
+    margin: 10px 0;
+    line-height: 1.4;
+  }
+
+  .project-tags {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    
+    .tag {
+      background: rgba($neon-pink, 0.1);
+      color: $neon-pink;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.85em;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba($neon-pink, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 0 10px rgba($neon-pink, 0.2);
+      }
+    }
+  }
+
+  .project-link {
+    margin-top: auto; // Push link to bottom
+    display: inline-block;
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba($neon-pink, 0.4);
+    box-shadow: 
+      inset 0 0 30px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba($neon-blue, 0.05);
+    background: rgba(30, 30, 40, 0.95);
+  }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    margin-left: 200px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 15px;
+  }
+}
+
+// Add these new styles after your existing .projects-grid styles
+
+.project-card.coming-soon {
+  position: relative;
+  
+  // Only blur the inner content
+  .card-content {
+    filter: blur(3px);
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: 'Coming Soon';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $neon-pink;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 
+      0 0 10px rgba($neon-pink, 0.5),
+      0 0 20px rgba($neon-pink, 0.3);
+    z-index: 3;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba($neon-pink, 0.3);
+    animation: pulsate 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+}
+
+@keyframes pulsate {
+  0%, 100% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+// Add these new styles for publications
+
+.publications-timeline {
+  position: relative;
+  padding-left: 120px;
+  margin-top: 40px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 70px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: $neon-blue;
+    box-shadow: 0 0 8px rgba($neon-blue, 0.3);
+    z-index: 0;
+  }
+}
+
+.year-marker {
+  background: $background-color;
+  color: $neon-blue;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 2px solid $neon-blue;
+  display: inline-block;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba($neon-blue, 0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  margin-left: -120px;
+}
+
+.publication-item {
+  margin: 20px 0 20px 40px;
+  position: relative;
+  background: rgba(25, 25, 30, 0.8);
+  border: 1px solid rgba($neon-blue, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba($neon-blue, 0.05);
+  transition: all 0.3s ease;
+  
+  // Publication date that appears on hover
+  &::before {
+    content: attr(data-date);
+    position: absolute;
+    left: -160px; // Position on the timeline
+    top: 50%;
+    transform: translateY(-50%);
+    background: $background-color;
+    color: $neon-pink;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid $neon-pink;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba($neon-pink, 0.3);
+    z-index: 2;
+  }
+  
+  // Horizontal connector line that appears on hover
+  &::after {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    width: 40px;
+    height: 3px;
+    background: $neon-pink;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 8px rgba($neon-pink, 0.3);
+  }
+  
+  &:hover {
+    border-color: rgba($neon-blue, 0.3);
+    box-shadow: 0 0 25px rgba($neon-blue, 0.1);
+    
+    &::before {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+    
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  h3 {
+    color: $neon-blue;
+    margin: 0 0 15px 0;
+    font-size: 1.4em;
+    text-shadow: 0 0 10px rgba($neon-blue, 0.3);
+  }
+}
+
+// Separate button styles
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  text-decoration: none;
+  
+  &.abstract-button {
+    color: $neon-pink;
+    border: 2px solid $neon-pink;
+    
+    &:hover {
+      background: rgba($neon-pink, 0.1);
+      box-shadow: 0 0 15px rgba($neon-pink, 0.2);
+    }
+    
+    &.active {
+      background: rgba($neon-pink, 0.15);
+    }
+  }
+  
+  &.pdf-button {
+    color: $neon-blue;
+    border: 2px solid $neon-blue;
+    
+    &:hover {
+      background: rgba($neon-blue, 0.1);
+      box-shadow: 0 0 15px rgba($neon-blue, 0.2);
+    }
+  }
+}
+
+.paper-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+// Ensure first year marker aligns properly
+.publication-entry.first {
+  margin-top: 0;
+  
+  .year-marker {
+    margin-top: 0;
+  }
+}
+
+// Publication titles should be stable
+.publication-item h3 {
+  position: relative; // Reset position
+  color: $neon-blue;
+  margin: 0 0 15px 0;
+  font-size: 1.4em;
+  text-shadow: 0 0 10px rgba($neon-blue, 0.3);
+  
+  
+}
+
+// Hero section with more impact
+.hero-section {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 60px 20px;
+  background: transparent;
+  margin: 0;
+  z-index: 1;
+  margin-top: -80vh;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  
+  h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 10px rgba($neon-blue, 0.3);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2em;
+    color: $text-color;
+  }
+}
+
+.main-content {
+  max-width: 100%;
+  margin: 0;
+  padding: 40px 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-item {
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.research-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    color: $text-color;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    
+    .arrow {
+      color: #00ffff;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.tech-icons, .hobby-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: flex-end;
+  
+  i {
+    font-size: 20px;
+    color: rgba(#00ffff, 0.8);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #00ffff;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5em;
+  }
+}
+
+// Add these new styles after your existing code
+
+// Particle container
+.particles-js {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  width: calc(100% - 200px);
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Make sure content stays above particles
+.wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+// Add subtle gradient overlay to improve text readability
+.particles-js::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba($background-color, 0.7) 0%,
+    rgba($background-color, 0.5) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+// Add media query for mobile
+@media (max-width: 768px) {
+  .particles-js {
+    left: 0;
+    width: 100%;
+  }
+  
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
 }

@@ -1,31 +1,71 @@
 ---
-layout: default 
+layout: default
 ---
 
-# Welcome to my personal website!
+<div id="particles-js"></div>
 
-This site was built entirely with the assistance of Claude-3.5. I'll be honest — I never really had the patience to dive into front-end development.
+<div class="hero-section">
+  <div class="hero-content">
+    <h1>Hi, I'm Paul</h1>
+    <div class="hero-subtitle">Research Associate at Fraunhofer AISEC</div>
+  </div>
+</div>
 
-But something a friend said during a hackathon has stuck with me, even though I can't recall if he actually said it or if it came to me in a dream after more than 24 hours of grinding on some quirky project. It went something like this:
+<section class="main-content">
+  <div class="section-grid">
+    <div class="section-item wide">
+      <h2>What I Do</h2>
+      <div class="underline"></div>
+      <div class="content-with-icons">
+        <div class="text-content">
+          <p>
+            I'm currently working as a Research Associate at Fraunhofer AISEC, where I get to dive deep into 
+            some fascinating areas where Security meets AI. My research mainly focuses on:
+          </p>
+          <ul class="research-list">
+            <li><span class="arrow">→</span> Large Language Models & Security</li>
+            <li><span class="arrow">→</span> Autonomous AI Agents</li>
+            <li><span class="arrow">→</span> Privacy-Preserving Machine Learning</li>
+            <li><span class="arrow">→</span> Adversarial Machine Learning</li>
+          </ul>
+        </div>
+        <div class="tech-icons vertical">
+          <i class="fas fa-shield-alt"></i>
+          <i class="fas fa-brain"></i>
+          <i class="fas fa-robot"></i>
+        </div>
+      </div>
+    </div>
 
-> "Even the best ideas need to look good for people to appreciate them." - [Tudor Esan](https://github.com/TudorEsan)
+    <div class="section-item">
+      <h2>My Background</h2>
+      <div class="underline"></div>
+      <p>
+        I completed both my Bachelor's and Master's in Computer Science at the Technical University of Munich (TUM). 
+        During my studies, I had the opportunity to collaborate with Fraunhofer AISEC, which really shaped my 
+        interest in AI Security and led me to where I am today.
+      </p>
+    </div>
 
+    <div class="section-item">
+      <h2>Beyond the Code</h2>
+      <div class="underline"></div>
+      <p>
+        I'm a huge coffee enthusiast - I love exploring different coffee shops and learning about extraction ratios 
+        and bean origins. One of my dreams is to eventually open my own espresso bar or roastery. I've also got some 
+        exciting plans for the future, including setting up a vertical aeroponic system for growing herbs and salads. 
+        Woodworking is another skill I'd love to learn, though finding the time between research and my coffee adventures 
+        is proving to be quite the challenge! When I'm not working, you'll probably find me hunting down obscure films 
+        or getting lost in music.
+      </p>
+      <div class="hobby-icons">
+        <i class="fas fa-coffee"></i>
+        <i class="fas fa-seedling"></i>
+        <i class="fas fa-hammer"></i>
+      </div>
+    </div>
+  </div>
+</section>
 
-## About Me
-
-I did my Bachelor's in Computer Science at TU München, where I wrote my thesis on Physical Adversarial Examples against Object Detectors at Fraunhofer AISEC. This was under the guidance of Prof. Dr. Claudia Eckert, Dr. Jan-Philipp Schulze, and Dr. Philip Sperl. (I’ll probably write a blog post someday about why I decided to study in Germany—link coming soon!)
-
-After that, I stuck around TUM for a Master’s in CS and started working at Fraunhofer AISEC as a HiWi. My Master’s thesis was about using Large Language Models (LLMs) to automate network mapping and asset discovery, again with the awesome team at Fraunhofer AISEC.
-
-As of August 1st, 2024, I’m working full-time as a Research Assistant (Wissenschaftlicher Mitarbeiter) at Fraunhofer AISEC, and I'm planning to pursue a PhD soon.
-
-
-## Recent Updates
-
-- **August 2024**: Completed my Master's degree in Computer Science at TU München. and started working full-time as a Research Assistant (Wissenschaftlicher Mitarbeiter) at Fraunhofer AISEC.
-
-- **November 2022**: Presented [my first paper](https://dl.acm.org/doi/abs/10.1145/3560830.3563733) at the 15th ACM Workshop on Artificial Intelligence and Security (AISec 2022) in Los Angeles, USA.
-
----
-
-Feel free to explore my [publications](/publications), [projects](/projects), and [blog posts](/blog) to learn more about my work.
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/particles-config.js"></script>
