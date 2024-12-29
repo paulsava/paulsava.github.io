@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <img src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Profile Picture" class="profile-picture">
+                <div class="bio">
+                    <h2>Paul Sava</h2>
+                    <p>PhD Student @ ETH Zürich</p>
+                </div>
+                <nav class="main-nav">
+                    <a href="{{ '/' | relative_url }}"><i class="fas fa-home"></i>Home</a>
+                    <a href="{{ '/projects' | relative_url }}"><i class="fas fa-code"></i>Projects</a>
+                    <a href="{{ '/publications' | relative_url }}"><i class="fas fa-book"></i>Publications</a>
+                    <a href="{{ '/blog' | relative_url }}"><i class="fas fa-pen"></i>Blog</a>
+                </nav>
+                <div class="social-links">
+                    <a href="https://github.com/paulsava" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/paulsava" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/paulsava" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <footer>
+                <p>&copy; {{ site.time | date: '%Y' }} Paul Sava</p>
+            </footer>
+        </div>
+        <div class="content">
+            {{ content }}
+        </div>
+    </div>
+</body>
+</html> 
