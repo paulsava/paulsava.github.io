@@ -1,0 +1,13 @@
+{
+  "name": "the-monospace-web",
+  "version": "1.0.0",
+  "description": "Personal website with markdown support",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "python3 -m http.server 8000 --directory public"
+  },
+  "dependencies": {
+    "marked": "^4.0.0"
+  }
+}
