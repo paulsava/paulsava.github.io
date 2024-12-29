@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - Paul Sava</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <title>Publications - Paul Sava</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="header-content">
-            <img src="{{ '/assets/img/Profile.png' | relative_url }}" alt="Paul Sava" class="profile">
+            <img src="Profile.png" alt="Paul Sava" class="profile">
             <div class="header-text">
                 <div class="title-row">
                     <h1>PAUL SAVA</h1>
@@ -17,21 +18,32 @@
                 </div>
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
-                    <a href="{{ '/' | relative_url }}">Home</a>
-                    <a href="{{ '/publications' | relative_url }}">Publications</a>
-                    <a href="{{ '/projects' | relative_url }}">Projects</a>
-                    <a href="{{ '/blog' | relative_url }}">Blog</a>
+                    <a href="index.html">Home</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <main>
-        {{ content }}
+        <h1>Publications</h1>
+
+        
+        <div class="publication">
+            <h2>Assessing the Impact of Transformations on Physical Adversarial Attacks</h2>
+            <div class="venue">AISec'22</div>
+            <div class="authors">Paul-Andrei Sava, Jan Philipp Schulze, Philip Sperl, Konstantin Böttinger</div>
+            <div class="controls">
+                <a href="#" class="pdf-button">[PDF]</a>
+            </div>
+        </div>
+        
     </main>
 
     <footer>
-        <p>© {{ site.time | date: '%Y' }} Paul Sava</p>
+        <p>© 2024 Paul Sava</p>
     </footer>
 
     <script>
@@ -49,4 +61,4 @@
         savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
     </script>
 </body>
-</html> 
+</html>
