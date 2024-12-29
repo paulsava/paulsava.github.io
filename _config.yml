@@ -10,9 +10,10 @@ theme: jekyll-theme-minimal
 
 # Include these files in the build
 include:
-  - publications.md
-  - projects.md
+  - _pages
   - blog.md
+  - projects.md
+  - publications.md
 
 plugins:
   - jekyll-feed
@@ -28,3 +29,11 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/ 
+
+defaults:
+  -
+    scope:
+      path: ""      # empty string for all files
+      type: "pages" # limit to pages
+    values:
+      layout: "default" 
