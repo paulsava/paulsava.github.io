@@ -8,6 +8,12 @@ url: "https://paulsava.github.io"
 markdown: kramdown
 theme: jekyll-theme-minimal
 
+# Include these files in the build
+include:
+  - publications.md
+  - projects.md
+  - blog.md
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
