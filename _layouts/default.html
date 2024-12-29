@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
+    <title>{{ page.title }} - Paul Sava</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="sidebar-content">
-                <img src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Profile Picture" class="profile-picture">
-                <div class="bio">
-                    <h2>Paul Sava</h2>
-                    <p>PhD Student @ ETH Zürich</p>
+    <header>
+        <div class="header-content">
+            <img src="{{ '/assets/img/Profile.png' | relative_url }}" alt="Paul Sava" class="profile">
+            <div class="header-text">
+                <div class="title-row">
+                    <h1>PAUL SAVA</h1>
+                    <button class="theme-toggle">[ ■ dark mode ]</button>
                 </div>
-                <nav class="main-nav">
-                    <a href="{{ '/' | relative_url }}"><i class="fas fa-home"></i>Home</a>
-                    <a href="{{ '/projects' | relative_url }}"><i class="fas fa-code"></i>Projects</a>
-                    <a href="{{ '/publications' | relative_url }}"><i class="fas fa-book"></i>Publications</a>
-                    <a href="{{ '/blog' | relative_url }}"><i class="fas fa-pen"></i>Blog</a>
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="{{ '/' | relative_url }}">Home</a>
+                    <a href="{{ '/publications' | relative_url }}">Publications</a>
+                    <a href="{{ '/projects' | relative_url }}">Projects</a>
+                    <a href="{{ '/blog' | relative_url }}">Blog</a>
                 </nav>
-                <div class="social-links">
-                    <a href="https://github.com/paulsava" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://twitter.com/paulsava" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://linkedin.com/in/paulsava" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
             </div>
-            <footer>
-                <p>&copy; {{ site.time | date: '%Y' }} Paul Sava</p>
-            </footer>
         </div>
-        <div class="content">
-            {{ content }}
-        </div>
-    </div>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p>© {{ site.time | date: '%Y' }} Paul Sava</p>
+    </footer>
+
+    <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+        localStorage.setItem('theme', newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').textContent = 
+        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+    </script>
 </body>
 </html> 
