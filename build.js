@@ -63,7 +63,6 @@ async function buildSite() {
     const headerTemplate = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
     <link rel="stylesheet" href="styles.css">`;
 
     // Common footer template
@@ -83,6 +82,7 @@ async function buildSite() {
 <head>
     ${headerTemplate}
     <title>Blog - Paul Sava</title>
+    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
 </head>
 <body>
     <header>
@@ -93,7 +93,6 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
-                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
@@ -104,7 +103,10 @@ async function buildSite() {
         </div>
     </header>
     <main>
-        <h1>Blog Posts</h1>
+        <div class="title-section">
+            <h1>Blog Posts</h1>
+            <a href="/feed.xml" class="rss-link">[ rss feed ]</a>
+        </div>
         
         ${blogPosts.length === 0 ? 
             `<div class="empty-message">No blog posts yet.</div>` :
