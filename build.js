@@ -11,9 +11,6 @@ async function buildSite() {
     
     // Copy static files
     const staticFiles = [
-        'index.html',
-        'publications.html',
-        'projects.html',
         'styles.css',
         'Profile.png'
     ];
@@ -377,6 +374,114 @@ async function buildSite() {
 </html>`;
 
     await fs.writeFile('./public/projects.html', projectsTemplate);
+
+    // Generate index page
+    const indexTemplate = `
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    ${headerTemplate}
+    <title>Paul Sava - AI Security Researcher at Fraunhofer AISEC</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Paul Sava - AI Security Researcher">
+    <meta name="description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta name="keywords" content="AI Security, Machine Learning, LLM Security, Privacy, TUM, Fraunhofer AISEC, Paul Sava, Research">
+    <meta name="author" content="Paul Sava">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paulsava.github.io/">
+    <meta property="og:title" content="Paul Sava - AI Security Researcher">
+    <meta property="og:description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta property="og:image" content="https://paulsava.github.io/Profile.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://paulsava.github.io/">
+    <meta property="twitter:title" content="Paul Sava - AI Security Researcher">
+    <meta property="twitter:description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta property="twitter:image" content="https://paulsava.github.io/Profile.png">
+</head>
+<body>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Paul Sava",
+        "jobTitle": "AI Security Researcher",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "Fraunhofer AISEC"
+        },
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Technical University of Munich"
+        },
+        "description": "AI Security Researcher focusing on LLM security, autonomous AI agents, and private machine learning",
+        "url": "https://paulsava.github.io"
+    }
+    </script>
+
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <p>Hey there! I'm Paul, and you've just stumbled upon my little corner of the internet.</p>
+            <p>This site isn't trying to win any design awards - it's just a simple space where I share my work, thoughts, and the things that keep me busy.</p>
+        </section>
+
+        <section id="what-i-do">
+            <h2>What I Do</h2>
+            <p>Right now, I'm diving deep into AI research at <a href="https://www.aisec.fraunhofer.de/">Fraunhofer AISEC</a> while working on my PhD at <a href="https://www.tum.de/">TUM</a> with <a href="https://www.sec.in.tum.de/i20/people/claudia-eckert">Prof. Dr. Claudia Eckert</a>. I spend most of my time thinking about:</p>
+            <ul>
+                <li>→ Making large language models more secure (and figuring out when they're not)</li>
+                <li>→ Teaching AI agents to be autonomous (but not too autonomous)</li>
+                <li>→ Keeping machine learning private (because some secrets are worth keeping)</li>
+                <li>→ Finding ways to break AI systems (so we can make them stronger)</li>
+            </ul>
+        </section>
+
+        <section id="background">
+            <h2>My Background</h2>
+            <p>I spent my university years at TUM, getting both my Bachelor's and Master's there. While my main focus was on ML and AI Security, I also dove into High Performance and Quantum Computing. I started at Fraunhofer AISEC as a student assistant in 2021, and after finishing my Master's in 2024, I joined the team full-time.</p>
+        </section>
+
+        <section id="beyond">
+            <h2>Beyond the Code</h2>
+            <p>When I'm not doing research, I like to mess around with coffee brewing. It's become a bit of a hobby - trying different beans, tweaking recipes, that kind of thing. Maybe I'll open a small coffee shop someday, who knows.</p>
+            <p>Got a few projects I want to get into - building an aeroponic setup, getting into woodworking, and playing around with 3D printing. Also picked up crocheting recently, which is surprisingly chill.</p>
+            <p>In my downtime, I dig through obscure movie collections and hunt for underground music. Always fun to find something different that most people haven't heard of.</p>
+        </section>
+    </main>
+
+    ${footerTemplate}
+</body>
+</html>`;
+
+    await fs.writeFile('./public/index.html', indexTemplate);
 
     // Generate RSS Feed
     console.log('Generating RSS feed...');
