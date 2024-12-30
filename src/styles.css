@@ -559,3 +559,24 @@ nav {
     font-style: italic;
     opacity: 0.7;
 } 
+
+/* Title section with RSS feed */
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2ch;
+}
+
+.title-section h1 {
+    margin: 0;
+}
+
+.title-section .rss-link {
+    text-decoration: none;
+    color: var(--text-color, #fff);
+}
+
+.title-section .rss-link:hover {
+    text-decoration: underline;
+} 
