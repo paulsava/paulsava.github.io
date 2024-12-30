@@ -9,14 +9,24 @@ async function buildSite() {
     await fs.mkdir('./public', { recursive: true });
     await fs.mkdir('./public/blog', { recursive: true });
     
-    // Copy static files
+    // Copy static files (only assets, not HTML)
     const staticFiles = [
         'styles.css',
-        'Profile.png'
+        'Profile.png',
+        'assets/favicon/apple-touch-icon.png',
+        'assets/favicon/favicon-32x32.png',
+        'assets/favicon/favicon-16x16.png',
+        'assets/favicon/android-chrome-192x192.png',
+        'assets/favicon/android-chrome-512x512.png',
+        'assets/favicon/site.webmanifest'
     ];
 
     for (const file of staticFiles) {
         try {
+            // Create directory if it doesn't exist
+            const dir = path.dirname(`./public/${file}`);
+            await fs.mkdir(dir, { recursive: true });
+            // Copy file
             await fs.copyFile(`./src/${file}`, `./public/${file}`);
         } catch (err) {
             console.log(`Warning: Could not copy ${file}: ${err.message}`);
