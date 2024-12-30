@@ -175,9 +175,69 @@ header {
         padding: 1ch;
     }
     
+    header {
+        padding: 1ch;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        gap: 2ch;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    .profile {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+    }
+
+    .header-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1ch;
+        min-width: 0;
+    }
+
+    .title-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5ch;
+    }
+
+    .title-row h1 {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .theme-toggle {
+        padding: 0;
+        font-size: 0.8rem;
+    }
+
+    .header-text > p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1ch;
+        margin-top: 2ch;
+        padding-top: 1ch;
+        border-top: 1px solid var(--border-color);
+        width: 100%;
+    }
+
     nav a {
-        display: block;
-        margin: 0.5ch 0;
+        text-align: center;
+        margin: 0;
+        padding: 0.5ch;
+        font-size: 0.9rem;
     }
 } 
 
