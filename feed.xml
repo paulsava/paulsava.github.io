@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Paul Sava's Blog</title>
+        <description>Thoughts on AI Security, Machine Learning, and beyond</description>
+        <link>https://paulsava.github.io</link>
+        <atom:link href="https://paulsava.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Mon, 30 Dec 2024 12:31:23 GMT</pubDate>
+        <lastBuildDate>Mon, 30 Dec 2024 12:31:23 GMT</lastBuildDate>
+        <generator>GitHub Actions RSS Generator</generator>
+        
+        <item>
+            <title>My plan for 2025</title>
+            <link>https://paulsava.github.io/blog/30dec2024-first-blog.html</link>
+            <pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+            <guid isPermaLink="true">https://paulsava.github.io/blog/30dec2024-first-blog.html</guid>
+            <description>
+I've been putting this off. Master thesis and general life stuff got in the way. But now it's time to start.
+
+I want to share interesting things I work on. That's it. This feels like the right place ...</description>
+        </item>
+    </channel>
+</rss>
