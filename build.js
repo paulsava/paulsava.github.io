@@ -52,6 +52,13 @@ async function buildSite() {
     // Sort by date
     blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    // Common header template
+    const headerTemplate = `
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
+    <link rel="stylesheet" href="styles.css">`;
+
     // Common footer template
     const footerTemplate = `
     <footer>
@@ -67,10 +74,8 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${headerTemplate}
     <title>Blog - Paul Sava</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -81,6 +86,7 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
+                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
@@ -138,10 +144,8 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${headerTemplate.replace('href="styles.css"', 'href="../styles.css"')}
     <title>${post.title} - Paul Sava</title>
-    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <header>
@@ -152,6 +156,7 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
+                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="../index.html">Home</a>
                     <a href="../publications.html">Publications</a>
@@ -224,10 +229,8 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${headerTemplate}
     <title>Publications - Paul Sava</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -238,6 +241,7 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
+                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
@@ -312,10 +316,8 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${headerTemplate}
     <title>Projects - Paul Sava</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -326,6 +328,7 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
+                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
@@ -374,6 +377,31 @@ async function buildSite() {
 </html>`;
 
     await fs.writeFile('./public/projects.html', projectsTemplate);
+
+    // Generate RSS Feed
+    console.log('Generating RSS feed...');
+    const rssTemplate = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Paul Sava's Blog</title>
+        <description>Thoughts on AI Security, Machine Learning, and beyond</description>
+        <link>https://paulsava.github.io</link>
+        <atom:link href="https://paulsava.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>${new Date().toUTCString()}</pubDate>
+        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+        <generator>GitHub Actions RSS Generator</generator>
+        ${blogPosts.map(post => `
+        <item>
+            <title>${post.metadata.title}</title>
+            <link>https://paulsava.github.io/blog/${post.file.replace('.md', '.html')}</link>
+            <pubDate>${new Date(post.metadata.date).toUTCString()}</pubDate>
+            <guid isPermaLink="true">https://paulsava.github.io/blog/${post.file.replace('.md', '.html')}</guid>
+            <description>${post.metadata.description || post.content.substring(0, 200) + '...'}</description>
+        </item>`).join('\n        ')}
+    </channel>
+</rss>`;
+
+    await fs.writeFile('./public/feed.xml', rssTemplate);
 
     console.log('Build complete!');
 }
