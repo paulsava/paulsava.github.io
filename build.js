@@ -155,6 +155,7 @@ async function buildSite() {
 <head>
     ${headerTemplate.replace('href="styles.css"', 'href="../styles.css"')}
     <title>${post.title} - Paul Sava</title>
+    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
 </head>
 <body>
     <header>
@@ -165,7 +166,6 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
-                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="../index.html">Home</a>
                     <a href="../publications.html">Publications</a>
@@ -250,7 +250,6 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
-                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
@@ -337,7 +336,6 @@ async function buildSite() {
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
-                <p><a href="/feed.xml" class="rss-link">RSS Feed</a></p>
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="publications.html">Publications</a>
