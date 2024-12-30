@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Paul Sava</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Projects</h1>
+
+        <div class="empty-message">No projects yet.</div>
+    </main>
+
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>
+
+    <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+        localStorage.setItem('theme', newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').textContent = 
+        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+    </script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.6;
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 2ch;
+    background-image: 
+        linear-gradient(#2a2a2a .1ch, transparent .1ch),
+        linear-gradient(90deg, #2a2a2a .1ch, transparent .1ch);
+    background-size: 1ch 1ch;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    margin: 2ch 0 1ch 0;
+    line-height: 1;
+}
+
+h1 { font-size: 1.2rem; font-weight: bold; }
+h2 { font-size: 1.2rem; font-weight: bold; }
+h3 { font-size: 1rem; font-weight: bold; }
+
+p {
+    margin: 1ch 0;
+}
+
+/* Links */
+a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Navigation */
+nav {
+    padding-top: 1ch;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-start;
+    gap: 3ch;
+    margin-top: auto;
+    width: 100%;
+}
+
+nav a {
+    margin-right: 0;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Profile image */
+.profile {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    margin: 1ch 0;
+}
+
+li {
+    line-height: 2;
+}
+
+/* Publications */
+.publication {
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    margin: 2ch 0;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.publication h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 1ch 0;
+}
+
+.publication .venue {
+    font-style: italic;
+    margin: 1ch 0;
+}
+
+.publication .authors {
+    margin: 1ch 0;
+}
+
+.publication .controls {
+    margin: 1ch 0 0 0;
+}
+
+.publication .pdf-button {
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    color: var(--text-color);
+}
+
+.publication .pdf-button:hover {
+    text-decoration: underline;
+}
+
+details {
+    margin: 1ch 0;
+}
+
+summary {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pdf-link {
+    display: inline-block;
+    margin-top: 1ch;
+}
+
+/* Sections */
+section {
+    margin: 3ch 0;
+}
+
+/* Footer */
+footer {
+    margin-top: 3ch;
+    padding-top: 1ch;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Header */
+header {
+    border: 1px solid #fff;
+    margin-bottom: 2ch;
+    padding: 2ch;
+    position: relative;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2ch;
+    max-width: 80ch;
+    margin: 0 auto;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1ch;
+}
+
+.profile {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid #fff;
+}
+
+.profile-section h1 {
+    margin: 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.header-text {
+    position: relative;
+    padding-bottom: 3ch;
+}
+
+.header-text > p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3ch;
+    padding-top: 1ch;
+    border-top: 1px solid #fff;
+}
+
+/* Version info */
+.version-info {
+    float: right;
+    text-align: right;
+}
+
+/* Media queries */
+@media (max-width: 480px) {
+    body {
+        padding: 1ch;
+    }
+    
+    header {
+        padding: 1.5ch;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2ch;
+    }
+
+    .profile-section {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .profile {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        max-width: 120px;
+    }
+
+    .profile-section h1 {
+        font-size: 1rem;
+        margin-top: 1ch;
+    }
+
+    .header-text {
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .header-text > p {
+        font-size: 0.9rem;
+        margin-bottom: 2ch;
+    }
+
+    nav {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1ch;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.5ch;
+    }
+}
+
+@media (max-width: 350px) {
+    .header-content {
+        gap: 1.5ch;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5ch;
+    }
+
+    nav a {
+        padding: 0.5ch;
+        border: 1px solid #fff;
+    }
+}
+
+/* Blog styles */
+#blog {
+    margin: 2ch 0 -1px 0;
+    border: 1px solid var(--border-color);
+    padding: 2ch;
+}
+
+#blog h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 3ch 0;
+}
+
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li:hover {
+    background-color: var(--grid-color);
+}
+
+.post-list a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 1ch;
+}
+
+.post-list .post-title {
+    margin-bottom: 0.5ch;
+}
+
+.post-list .post-date {
+    font-family: "Courier New", Courier, monospace;
+    opacity: 0.7;
+}
+
+/* Blog navigation and separators */
+.separator {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 0;
+}
+
+/* Blog post container */
+.blog-container {
+    margin: 0;
+    border: 1px solid var(--border-color);
+    padding: 2ch;
+}
+
+.blog-container h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 2ch 0 1ch 0;
+}
+
+.blog-container .blog-date {
+    font-family: "Courier New", Courier, monospace;
+    opacity: 0.7;
+    margin-bottom: 2ch;
+}
+
+/* Blog content */
+.blog-post {
+    margin: 2ch 0;
+}
+
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+}
+
+.blog-post h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 3ch 0 2ch 0;
+}
+
+.blog-post p {
+    margin: 2ch 0;
+}
+
+.blog-post ul,
+.blog-post ol {
+    list-style: none;
+    margin: 1ch 0;
+    padding: 0;
+}
+
+.blog-post li {
+    padding-left: 2ch;
+    position: relative;
+    line-height: 2;
+}
+
+.blog-post li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+}
+
+.blog-post ol {
+    counter-reset: item;
+}
+
+.blog-post ol > li {
+    counter-increment: item;
+    padding-left: 4ch;
+}
+
+.blog-post ol > li:before {
+    content: counter(item) ". →";
+    position: absolute;
+    left: 0;
+    width: 4ch;
+}
+
+/* Blog navigation */
+.nav-row {
+    display: flex;
+    margin: 0;
+}
+
+.nav-button {
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    color: var(--text-color);
+}
+
+.nav-button:hover {
+    text-decoration: underline;
+} 
+
+/* Projects */
+.project {
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    margin: 2ch 0;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.project h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 1ch 0;
+}
+
+.project-meta {
+    margin: 1ch 0;
+    display: flex;
+    gap: 2ch;
+}
+
+.project .status {
+    font-style: italic;
+}
+
+.project .github-link {
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    color: var(--text-color);
+}
+
+.project .github-link:hover {
+    text-decoration: underline;
+}
+
+.project .description {
+    margin: 2ch 0 0 0;
+}
+
+.project .description ul,
+.project .description ol {
+    list-style: none;
+    margin: 1ch 0;
+    padding: 0;
+}
+
+.project .description li {
+    padding-left: 2ch;
+    position: relative;
+    line-height: 2;
+}
+
+.project .description li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+}
+
+.project .description ol {
+    counter-reset: item;
+}
+
+.project .description ol > li {
+    counter-increment: item;
+    padding-left: 4ch;
+}
+
+.project .description ol > li:before {
+    content: counter(item) ". →";
+    position: absolute;
+    left: 0;
+    width: 4ch;
+} 
+
+/* Blog listing */
+.blog-entry {
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    margin: 2ch 0;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.blog-entry h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 1ch 0;
+}
+
+.blog-entry .blog-date {
+    font-style: italic;
+    margin: 1ch 0;
+}
+
+.blog-entry .blog-link {
+    margin: 1ch 0 0 0;
+}
+
+.blog-entry .blog-link a {
+    text-decoration: none;
+    color: var(--text-color, #fff);
+}
+
+.blog-entry .blog-link a:hover {
+    text-decoration: underline;
+}
+
+/* Remove old blog listing styles */
+#blog {
+    margin: 2ch 0 -1px 0;
+}
+
+#blog h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 3ch 0;
+}
+
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+} 
+
+.empty-message {
+    border: 1px solid var(--border-color);
+    padding: 2ch;
+    margin: 2ch 0 -1px 0;
+    font-style: italic;
+    opacity: 0.7;
+} 

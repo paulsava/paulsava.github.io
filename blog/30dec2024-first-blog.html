@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My plan for 2025 - Paul Sava</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="../Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="../index.html">Home</a>
+                    <a href="../publications.html">Publications</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../blog.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="blog-container">
+            <div class="nav-row">
+                <a href="../blog.html" class="nav-button">[ ← back ]</a>
+            </div>
+
+            <h1>My plan for 2025</h1>
+            <div class="blog-date">2024-12-30</div>
+
+            <hr class="separator" />
+
+            <article class="blog-post">
+                <p>I&#39;ve been putting this off. Master thesis and general life stuff got in the way. But now it&#39;s time to start.</p>
+<p>I want to share interesting things I work on. That&#39;s it. This feels like the right place to do it.</p>
+<p>The site has three parts:</p>
+<ul>
+<li>Publications: My academic work, free to access</li>
+<li>Projects: DIY stuff like 3D printing espresso parts and building an aeroponic garden</li>
+<li>Blog: Thoughts on tech, movies, music, food, and whatever else</li>
+</ul>
+<p>One of my resolutions for 2025: Post something every month, even if it&#39;s brief.</p>
+<p>Let&#39;s see how this goes.</p>
+<p><img src="https://imgs.xkcd.com/comics/resolution.png" alt="XKCD comic about New Year&#39;s resolutions"></p>
+<p><em>Source: <a href="https://xkcd.com/1154">XKCD #1154</a></em></p>
+
+            </article>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>
+    <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+        localStorage.setItem('theme', newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').textContent = 
+        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
+    </script>
+</body>
+</html>
