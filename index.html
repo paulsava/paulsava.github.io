@@ -9,12 +9,9 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="top-row">
+            <div class="profile-section">
                 <img src="Profile.png" alt="Paul Sava" class="profile">
-                <div class="title-row">
-                    <h1>PAUL SAVA</h1>
-                    <button class="theme-toggle">[ ■ dark mode ]</button>
-                </div>
+                <h1>PAUL SAVA</h1>
             </div>
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
@@ -59,20 +56,5 @@
     <footer>
         <p>© 2024 Paul Sava</p>
     </footer>
-
-    <script>
-    document.querySelector('.theme-toggle').addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.querySelector('.theme-toggle').textContent = 
-        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-    </script>
 </body>
 </html>
