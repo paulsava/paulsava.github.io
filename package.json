@@ -5,7 +5,9 @@
   "main": "build.js",
   "scripts": {
     "build": "node build.js",
-    "serve": "python3 -m http.server 8000 --directory public"
+    "serve": "python3 -m http.server 8000 --directory public",
+    "clean": "rm -rf public/*",
+    "clean-build": "npm run clean && npm run build"
   },
   "dependencies": {
     "marked": "^4.0.0"

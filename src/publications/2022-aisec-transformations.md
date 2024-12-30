@@ -2,7 +2,7 @@
 title: "Assessing the Impact of Transformations on Physical Adversarial Attacks"
 venue: "AISec'22: Proceedings of the 15th ACM Workshop on Artificial Intelligence and Security"
 authors: "Paul-Andrei Sava, Jan Philipp Schulze, Philip Sperl, Konstantin Böttinger"
-pdf: "#"
+pdf: "https://dl.acm.org/doi/abs/10.1145/3560830.3563733"
 date: "2022-10-15"
 ---
 

@@ -20,7 +20,7 @@ async function buildSite() {
 
     for (const file of staticFiles) {
         try {
-            await fs.copyFile(file, `./public/${file}`);
+            await fs.copyFile(`./src/${file}`, `./public/${file}`);
         } catch (err) {
             console.log(`Warning: Could not copy ${file}: ${err.message}`);
         }
@@ -65,12 +65,11 @@ async function buildSite() {
 <body>
     <header>
         <div class="header-content">
-            <img src="Profile.png" alt="Paul Sava" class="profile">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
             <div class="header-text">
-                <div class="title-row">
-                    <h1>PAUL SAVA</h1>
-                    <button class="theme-toggle">[ ■ dark mode ]</button>
-                </div>
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
                     <a href="index.html">Home</a>
@@ -139,12 +138,11 @@ async function buildSite() {
 <body>
     <header>
         <div class="header-content">
-            <img src="../Profile.png" alt="Paul Sava" class="profile">
+            <div class="profile-section">
+                <img src="../Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
             <div class="header-text">
-                <div class="title-row">
-                    <h1>PAUL SAVA</h1>
-                    <button class="theme-toggle">[ ■ dark mode ]</button>
-                </div>
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
                     <a href="../index.html">Home</a>
@@ -228,12 +226,11 @@ async function buildSite() {
 <body>
     <header>
         <div class="header-content">
-            <img src="Profile.png" alt="Paul Sava" class="profile">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
             <div class="header-text">
-                <div class="title-row">
-                    <h1>PAUL SAVA</h1>
-                    <button class="theme-toggle">[ ■ dark mode ]</button>
-                </div>
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
                     <a href="index.html">Home</a>
@@ -318,12 +315,11 @@ async function buildSite() {
 <body>
     <header>
         <div class="header-content">
-            <img src="Profile.png" alt="Paul Sava" class="profile">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
             <div class="header-text">
-                <div class="title-row">
-                    <h1>PAUL SAVA</h1>
-                    <button class="theme-toggle">[ ■ dark mode ]</button>
-                </div>
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
                     <a href="index.html">Home</a>
