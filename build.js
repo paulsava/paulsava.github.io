@@ -98,6 +98,7 @@ async function buildSite() {
     </main>
     <footer>
         <p>© 2024 Paul Sava</p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
@@ -171,6 +172,7 @@ async function buildSite() {
     </main>
     <footer>
         <p>© 2024 Paul Sava</p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
@@ -259,6 +261,7 @@ async function buildSite() {
 
     <footer>
         <p>© 2024 Paul Sava</p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
 
     <script>
@@ -353,6 +356,7 @@ async function buildSite() {
 
     <footer>
         <p>© 2024 Paul Sava</p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
 
     <script>

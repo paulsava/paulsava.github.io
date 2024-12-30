@@ -140,6 +140,11 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
+.footer-credit {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
 /* Header */
 header {
     border: 1px solid #fff;
