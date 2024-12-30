@@ -354,8 +354,14 @@ nav {
 
 /* Blog content */
 .blog-post {
-    padding: 0;
-    margin: 2ch 0 0 0;
+    margin: 2ch 0;
+}
+
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
 }
 
 .blog-post h2 {
