@@ -52,7 +52,17 @@ async function buildSite() {
     // Sort by date
     blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Create blog listing page
+    // Common footer template
+    const footerTemplate = `
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
+            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
+            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
+        </p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>`;
+
+    // Blog listing template
     const blogTemplate = `
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -96,10 +106,7 @@ async function buildSite() {
             `).join('\n')
         }
     </main>
-    <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>
+    ${footerTemplate}
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -170,10 +177,7 @@ async function buildSite() {
             </article>
         </div>
     </main>
-    <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>
+    ${footerTemplate}
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -215,7 +219,7 @@ async function buildSite() {
     // Sort by date
     publications.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Create publications page
+    // Publications template
     const publicationsTemplate = `
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -247,23 +251,21 @@ async function buildSite() {
     <main>
         <h1>Publications</h1>
 
-        ${publications.map(pub => `
-        <div class="publication">
-            <h2>${pub.title}</h2>
-            <div class="venue">${pub.venue}</div>
-            <div class="authors">${pub.authors}</div>
-            <div class="controls">
-                <a href="${pub.pdf}" class="pdf-button">[PDF]</a>
+        ${publications.length === 0 ? 
+            `<div class="empty-message">No publications yet.</div>` :
+            publications.map(pub => `
+            <div class="publication">
+                <h2>${pub.title}</h2>
+                <div class="venue">${pub.venue}</div>
+                <div class="authors">${pub.authors}</div>
+                <div class="controls">
+                    ${pub.pdf ? `<a href="${pub.pdf}" class="pdf-button">[PDF]</a>` : ''}
+                </div>
             </div>
-        </div>
-        `).join('\n')}
+            `).join('\n')
+        }
     </main>
-
-    <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>
-
+    ${footerTemplate}
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -353,12 +355,7 @@ async function buildSite() {
             `).join('\n')
         }
     </main>
-
-    <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>
-
+    ${footerTemplate}
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
