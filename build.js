@@ -116,26 +116,8 @@ async function buildSite() {
     <!-- Umami Analytics (Privacy-friendly) -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>`;
 
-    // Common footer template
-    const footerTemplate = `
-    <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
-            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
-            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
-        </p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>`;
-
-    // Blog listing template
-    const blogTemplate = `
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-    ${headerTemplate}
-    <title>Blog - Paul Sava</title>
-    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
-</head>
-<body>
+    // Common header structure template
+    const headerStructureTemplate = `
     <header>
         <div class="header-content">
             <div class="profile-section">
@@ -152,7 +134,61 @@ async function buildSite() {
                 </nav>
             </div>
         </div>
-    </header>
+    </header>`;
+
+    // Blog post header structure template (with relative paths)
+    const blogPostHeaderTemplate = `
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="../Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="../index.html">Home</a>
+                    <a href="../publications.html">Publications</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../blog.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>`;
+
+    // Common footer template
+    const footerTemplate = `
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
+            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
+            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
+        </p>
+        <p><a href="impressum.html">Impressum</a> / <a href="impressum-de.html">Impressum (DE)</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>`;
+
+    // Blog post footer template (with relative paths)
+    const blogPostFooterTemplate = `
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
+            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
+            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
+        </p>
+        <p><a href="../impressum.html">Impressum</a> / <a href="../impressum-de.html">Impressum (DE)</a> · <a href="../privacy.html">Privacy Policy</a> / <a href="../datenschutz.html">Datenschutzerklärung</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>`;
+
+    // Blog listing template
+    const blogTemplate = `
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    ${headerTemplate}
+    <title>Blog - Paul Sava</title>
+    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
+</head>
+<body>
+    ${headerStructureTemplate}
     <main>
         <div class="title-section">
             <h1>Blog Posts</h1>
@@ -171,20 +207,6 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
-    <script>
-    document.querySelector('.theme-toggle').addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.querySelector('.theme-toggle').textContent = 
-        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-    </script>
 </body>
 </html>`;
 
@@ -207,23 +229,7 @@ async function buildSite() {
     <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="profile-section">
-                <img src="../Profile.png" alt="Paul Sava" class="profile">
-                <h1>PAUL SAVA</h1>
-            </div>
-            <div class="header-text">
-                <p>i am a social vegan. i avoid meet.</p>
-                <nav>
-                    <a href="../index.html">Home</a>
-                    <a href="../publications.html">Publications</a>
-                    <a href="../projects.html">Projects</a>
-                    <a href="../blog.html">Blog</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    ${blogPostHeaderTemplate}
     <main>
         <div class="blog-container">
             <div class="nav-row">
@@ -256,7 +262,7 @@ async function buildSite() {
                         data-reactions-enabled="1"
                         data-emit-metadata="0"
                         data-input-position="bottom"
-                        data-theme="fro"
+                        data-theme="dark"
                         data-lang="en"
                         data-loading="lazy"
                         crossorigin="anonymous"
@@ -266,21 +272,7 @@ async function buildSite() {
             </div>
         </div>
     </main>
-    ${footerTemplate}
-    <script>
-    document.querySelector('.theme-toggle').addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.querySelector('.theme-toggle').textContent = 
-        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-    </script>
+    ${blogPostFooterTemplate}
 </body>
 </html>`;
 
@@ -317,24 +309,7 @@ async function buildSite() {
     <title>Publications - Paul Sava</title>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="profile-section">
-                <img src="Profile.png" alt="Paul Sava" class="profile">
-                <h1>PAUL SAVA</h1>
-            </div>
-            <div class="header-text">
-                <p>i am a social vegan. i avoid meet.</p>
-                <nav>
-                    <a href="index.html">Home</a>
-                    <a href="publications.html">Publications</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
+    ${headerStructureTemplate}
     <main>
         <h1>Publications</h1>
 
@@ -353,20 +328,6 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
-    <script>
-    document.querySelector('.theme-toggle').addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.querySelector('.theme-toggle').textContent = 
-        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-    </script>
 </body>
 </html>`;
 
@@ -403,24 +364,7 @@ async function buildSite() {
     <title>Projects - Paul Sava</title>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="profile-section">
-                <img src="Profile.png" alt="Paul Sava" class="profile">
-                <h1>PAUL SAVA</h1>
-            </div>
-            <div class="header-text">
-                <p>i am a social vegan. i avoid meet.</p>
-                <nav>
-                    <a href="index.html">Home</a>
-                    <a href="publications.html">Publications</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
+    ${headerStructureTemplate}
     <main>
         <h1>Projects</h1>
 
@@ -441,20 +385,6 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
-    <script>
-    document.querySelector('.theme-toggle').addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.textContent = newTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.querySelector('.theme-toggle').textContent = 
-        savedTheme === 'dark' ? '[ ■ dark mode ]' : '[ □ dark mode ]';
-    </script>
 </body>
 </html>`;
 
