@@ -198,12 +198,13 @@ async function buildSite() {
         ${blogPosts.length === 0 ? 
             `<div class="empty-message">No blog posts yet.</div>` :
             blogPosts.map(post => `
-            <a href="blog/${post.file.replace('.md', '.html')}">
-                <div class="blog-entry">
-                    <h2>${post.title}</h2>
-                    <div class="blog-date">${post.date}</div>
+            <div class="blog-entry" onclick="window.location.href='blog/${post.file.replace('.md', '.html')}'">
+                <h2>${post.title}</h2>
+                <div class="blog-date">${post.date}</div>
+                <div class="blog-link">
+                    <a href="blog/${post.file.replace('.md', '.html')}">[ read more ]</a>
                 </div>
-            </a>
+            </div>
             `).join('\n')
         }
     </main>
