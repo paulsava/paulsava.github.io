@@ -505,34 +505,42 @@ nav {
 
 /* Blog listing */
 .blog-entry {
+    display: block;
+    text-decoration: none;
     border: 1px solid var(--border-color, #fff);
     padding: 2ch;
     margin: 2ch 0;
     background: rgba(255, 255, 255, 0.03);
+    color: var(--text-color, #fff);
+    transition: background-color 0.2s ease;
+}
+
+.blog-entry:hover {
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .blog-entry h2 {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0 0 1ch 0;
+    color: var(--text-color, #fff);
 }
 
 .blog-entry .blog-date {
     font-style: italic;
     margin: 1ch 0;
+    opacity: 0.7;
+}
+
+.blog-entry .blog-description {
+    margin: 1.5ch 0;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
 .blog-entry .blog-link {
-    margin: 1ch 0 0 0;
-}
-
-.blog-entry .blog-link a {
-    text-decoration: none;
-    color: var(--text-color, #fff);
-}
-
-.blog-entry .blog-link a:hover {
-    text-decoration: underline;
+    margin: 1.5ch 0 0 0;
+    opacity: 0.8;
 }
 
 /* Remove old blog listing styles */
