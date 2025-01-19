@@ -202,7 +202,7 @@ async function buildSite() {
                 <h2>${post.title}</h2>
                 <div class="blog-date">${post.date}</div>
                 <div class="blog-link">
-                    <a href="blog/${post.file.replace('.md', '.html')}">[ read more ]</a>
+                    <a href="blog/${post.file.replace('.md', '.html')}" onclick="event.stopPropagation()">[ read more ]</a>
                 </div>
             </div>
             `).join('\n')
