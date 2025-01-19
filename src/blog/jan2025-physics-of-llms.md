@@ -4,7 +4,7 @@ date: Sun, 19 Jan 2025
 description: That one ICML tutorial that changed how I think about LLMs
 ---
 
-# That One ICML Tutorial Th at Changed How I Think About LLMs
+# That One ICML Tutorial That Changed How I Think About LLMs
 
 I spend too much time on Twitter. But somehow, I've managed to turn my feed into something actually worth reading, especially for research updates. That's where I found this ICML tutorial called [Physics of LLMs](https://physics.allen-zhu.com) while working on my thesis. It changed how I think about language models.
 
@@ -85,8 +85,13 @@ I'm particularly interested in using uncertainty signals for better sampling str
 
 *If you want to discuss any of this, feel free to [email me](mailto:mail@paulsava.com). I actually enjoy talking about this stuff.*
 
-![XKCD Comic: Making Progress](https://imgs.xkcd.com/comics/making_progress.png)
+<div class="xkcd-comic">
+    <img src="https://imgs.xkcd.com/comics/making_progress.png" alt="XKCD Comic: Making Progress">
+    <div class="comic-credit">Source: <a href="https://xkcd.com/1154">XKCD #1154</a></div>
+</div>
 
-P.S. Hi David, I know you're probably the only one reading this at the moment! 😉
-
-P.S. #2: Full disclosure - some of this content has been reformulated and corrected with Claude because I don't have the energy to fix my own typos or read this too many times. I write the ideas up to about 80% and set the tone, then let my friend Claude help polish the rest. Maybe in the future I won't do this, but that's how it is for now. 🤖✨
+<div class="post-credits">
+    <hr class="separator" />
+    <p class="disclosure">P.S. Hi David, I know you're probably the only one reading this at the moment! 😉</p>
+    <p class="disclosure">P.S. #2: Full disclosure - some of this content has been reformulated and corrected with Claude because I don't have the energy to fix my own typos or read this too many times. I write the ideas up to about 80% and set the tone, then let my friend Claude help polish the rest. Maybe in the future I won't do this, but that's how it is for now. 🤖✨</p>
+</div>
