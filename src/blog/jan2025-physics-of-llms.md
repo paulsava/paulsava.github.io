@@ -1,6 +1,6 @@
 ---
 title: Physics of LLMs
-date: Sun, 19 Jan 2025 17:39:00 +0000
+date: Sun, 19 Jan 2025
 description: That one ICML tutorial that changed how I think about LLMs
 ---
 
