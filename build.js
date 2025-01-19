@@ -165,7 +165,7 @@ async function buildSite() {
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
         <p><a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
-        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // German footer template
@@ -173,7 +173,7 @@ async function buildSite() {
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
         <p><a href="impressum-de.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a></p>
-        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // Blog post footer template (with relative paths)
@@ -181,7 +181,7 @@ async function buildSite() {
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
         <p><a href="../impressum.html">Impressum</a> · <a href="../privacy.html">Privacy Policy</a></p>
-        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // Blog listing template
