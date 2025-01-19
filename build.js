@@ -160,11 +160,19 @@ async function buildSite() {
         </div>
     </header>`;
 
-    // Common footer template
+    // Common footer template (English)
     const footerTemplate = `
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p><a href="impressum.html">Impressum</a> / <a href="impressum-de.html">Impressum (DE)</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
+        <p><a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+    </footer>`;
+
+    // German footer template
+    const footerTemplateDE = `
+    <footer>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
+        <p><a href="impressum-de.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a></p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
@@ -172,7 +180,7 @@ async function buildSite() {
     const blogPostFooterTemplate = `
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p><a href="../impressum.html">Impressum</a> / <a href="../impressum-de.html">Impressum (DE)</a> · <a href="../privacy.html">Privacy Policy</a> / <a href="../datenschutz.html">Datenschutzerklärung</a></p>
+        <p><a href="../impressum.html">Impressum</a> · <a href="../privacy.html">Privacy Policy</a></p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
