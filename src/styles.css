@@ -512,11 +512,12 @@ nav {
     margin: 2ch 0;
     background: rgba(255, 255, 255, 0.03);
     color: var(--text-color, #fff);
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .blog-entry:hover {
     background: rgba(255, 255, 255, 0.06);
+    transform: translateX(4px);
 }
 
 .blog-entry h2 {
@@ -533,14 +534,9 @@ nav {
 }
 
 .blog-entry .blog-description {
-    margin: 1.5ch 0;
+    margin: 0;
     line-height: 1.5;
     opacity: 0.9;
-}
-
-.blog-entry .blog-link {
-    margin: 1.5ch 0 0 0;
-    opacity: 0.8;
 }
 
 /* Remove old blog listing styles */

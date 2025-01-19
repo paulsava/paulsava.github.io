@@ -164,9 +164,6 @@ async function buildSite() {
                 <h2>${post.title}</h2>
                 <div class="blog-date">${post.date}</div>
                 ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
-                <div class="blog-link">
-                    [ read more ]
-                </div>
             </a>
             `).join('\n')
         }
