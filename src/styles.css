@@ -564,19 +564,19 @@ nav {
 
 .blog-meta {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.5ch;
-    font-style: italic;
     opacity: 0.7;
     margin: 0;
 }
 
-.blog-date, .reading-time {
-    display: inline-block;
+.blog-date {
+    font-style: italic;
 }
 
 .reading-time:before {
     content: "·";
+    margin: 0 0.5ch;
 }
 
 .blog-entry .blog-description {
