@@ -1,6 +1,7 @@
 ---
 title: My plan for 2025
-date: 2024-12-30
+date: Mon, 30 Dec 2024
+description: So I am a blogger now, huh?
 ---
 
 I've been putting this off. Master thesis and general life stuff got in the way. But now it's time to start.
