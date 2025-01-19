@@ -188,18 +188,6 @@ async function buildSite() {
         <p>© 2024 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
-    // Blog post footer template (with relative paths)
-    const blogPostFooterTemplate = `
-    <footer>
-        <p><a href="mailto:mail@paulsava.com" title="Email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a> · 
-           <a href="https://github.com/paulsava" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a> · 
-           <a href="https://twitter.com/_psava" title="X (Twitter)" aria-label="Follow me on X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a> · 
-           <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="View my publications on Google Scholar"><i class="fas fa-graduation-cap"></i></a> · 
-           <a href="../impressum.html">Impressum</a> · 
-           <a href="../privacy.html">Privacy Policy</a></p>
-        <p>© 2024 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
-    </footer>`;
-
     // Blog listing template
     const blogTemplate = `
 <!DOCTYPE html>
@@ -219,16 +207,20 @@ async function buildSite() {
         
         ${blogPosts.length === 0 ? 
             `<div class="empty-message">No blog posts yet.</div>` :
-            blogPosts.map(post => `
-            <a href="blog/${post.file.replace('.md', '.html')}" class="blog-entry">
-                <h2>${post.title}</h2>
-                <div class="blog-meta">
-                    <span class="blog-date">${post.date}</span>
-                    <span class="reading-time">${post.readingTime} min read</span>
-                </div>
-                ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
-            </a>
-            `).join('\n')
+            blogPosts.map(post => {
+                const wordCount = post.content.trim().split(/\s+/).length;
+                const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute
+                return `
+                <a href="blog/${post.file.replace('.md', '.html')}" class="blog-entry">
+                    <h2>${post.title}</h2>
+                    <div class="blog-meta">
+                        <span class="blog-date">${post.date}</span>
+                        <span class="reading-time">${readingTime} min read</span>
+                    </div>
+                    ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
+                </a>
+                `;
+            }).join('\n')
         }
     </main>
     ${footerTemplate}
@@ -262,6 +254,8 @@ async function buildSite() {
         
         console.log('Building blog post:', post.file);
         const html = marked.parse(post.content);
+        const wordCount = post.content.trim().split(/\s+/).length;
+        const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute
         const postTemplate = `
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -281,7 +275,7 @@ async function buildSite() {
             <h1>${post.title}</h1>
             <div class="blog-meta">
                 <span class="blog-date">${post.date}</span>
-                <span class="reading-time">${post.readingTime} min read</span>
+                <span class="reading-time">${readingTime} min read</span>
             </div>
 
             <hr class="separator" />
@@ -317,7 +311,7 @@ async function buildSite() {
             </div>
         </div>
     </main>
-    ${blogPostFooterTemplate}
+    ${footerTemplate}
 
     <div id="analytics-notice" class="analytics-notice">
         <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="../privacy.html#analytics">Learn more</a></p>
