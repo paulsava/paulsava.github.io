@@ -251,7 +251,7 @@ async function buildSite() {
                     data-reactions-enabled="1"
                     data-emit-metadata="0"
                     data-input-position="bottom"
-                    data-theme="dark_high_contrast"
+                    data-theme="transparent_dark"
                     data-lang="en"
                     data-loading="lazy"
                     crossorigin="anonymous"
