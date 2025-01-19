@@ -9,7 +9,8 @@ async function generateRSSFeed(blogPosts) {
     
     const rssItems = blogPosts.map(post => {
         const postUrl = `${websiteUrl}/blog/${post.file.replace('.md', '.html')}`;
-        const description = post.content.split('\n').slice(0, 3).join('\n'); // First 3 lines as description
+        // Use the description from metadata, or fall back to a truncated content
+        const description = post.metadata.description || post.content.split('\n').slice(0, 3).join('\n');
         
         return `
         <item>
@@ -17,7 +18,7 @@ async function generateRSSFeed(blogPosts) {
             <link>${postUrl}</link>
             <guid>${postUrl}</guid>
             <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-            <description>${escapeXml(marked.parse(description))}</description>
+            <description>${escapeXml(description)}</description>
         </item>`;
     }).join('\n');
 
