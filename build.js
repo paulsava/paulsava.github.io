@@ -207,20 +207,15 @@ async function buildSite() {
         
         ${blogPosts.length === 0 ? 
             `<div class="empty-message">No blog posts yet.</div>` :
-            blogPosts.map(post => {
-                const wordCount = post.content.trim().split(/\s+/).length;
-                const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute
-                return `
+            blogPosts.map(post => `
                 <a href="blog/${post.file.replace('.md', '.html')}" class="blog-entry">
                     <h2>${post.title}</h2>
                     <div class="blog-meta">
                         <span class="blog-date">${post.date}</span>
-                        <span class="reading-time">${readingTime} min read</span>
                     </div>
                     ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
                 </a>
-                `;
-            }).join('\n')
+            `).join('\n')
         }
     </main>
     ${footerTemplate}
@@ -275,7 +270,6 @@ async function buildSite() {
             <h1>${post.title}</h1>
             <div class="blog-meta">
                 <span class="blog-date">${post.date}</span>
-                <span class="reading-time">${readingTime} min read</span>
             </div>
 
             <hr class="separator" />
