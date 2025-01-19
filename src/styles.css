@@ -588,12 +588,27 @@ nav {
 /* Comments section */
 .comments-section {
     margin: 4ch 0 2ch 0;
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    background: rgba(255, 255, 255, 0.03);
 }
 
-.comments-section h2 {
+.comments-header {
+    margin-bottom: 2ch;
+}
+
+.comments-header h2 {
     font-size: 1.2rem;
     font-weight: bold;
-    margin: 0 0 2ch 0;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.comments-container {
+    margin-top: 2ch;
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Giscus iframe container */
@@ -603,7 +618,7 @@ nav {
 
 /* Giscus theme overrides */
 .giscus-frame {
-    background-color: transparent !important;
+    background: transparent !important;
 }
 
 :root {
@@ -614,4 +629,6 @@ nav {
     --giscus-button-border: 1px solid #fff !important;
     --giscus-button-bg: rgba(255, 255, 255, 0.03) !important;
     --giscus-button-hover-bg: rgba(255, 255, 255, 0.06) !important;
+    --giscus-comment-box-bg: transparent !important;
+    --giscus-input-bg: rgba(255, 255, 255, 0.03) !important;
 } 
