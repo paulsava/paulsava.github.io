@@ -164,24 +164,21 @@ async function buildSite() {
     const footerTemplate = `
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p class="footer-credit"><a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
     </footer>`;
 
     // German footer template
     const footerTemplateDE = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p class="footer-credit"><a href="impressum-de.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">E-Mail</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum-de.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a></p>
     </footer>`;
 
     // Blog post footer template (with relative paths)
     const blogPostFooterTemplate = `
     <footer>
         <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p class="footer-credit"><a href="../impressum.html">Impressum</a> · <a href="../privacy.html">Privacy Policy</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="../impressum.html">Impressum</a> · <a href="../privacy.html">Privacy Policy</a></p>
     </footer>`;
 
     // Blog listing template
