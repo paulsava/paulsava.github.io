@@ -588,9 +588,6 @@ nav {
 /* Comments section */
 .comments-section {
     margin: 4ch 0 2ch 0;
-    border: 2px solid var(--border-color, #fff);
-    padding: 2ch;
-    background: rgba(255, 255, 255, 0.04);
 }
 
 .comments-header {
@@ -601,47 +598,11 @@ nav {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
-    opacity: 1;
-}
-
-.comments-container {
-    margin-top: 2ch;
-    border: 2px solid var(--border-color, #fff);
-    padding: 2ch;
-    background: rgba(255, 255, 255, 0.03);
 }
 
 /* Giscus iframe container */
 .giscus {
     margin-top: 2ch;
-}
-
-/* Giscus theme overrides */
-.giscus-frame {
-    background: transparent !important;
-}
-
-:root {
-    --giscus-background-color: transparent !important;
-    --giscus-border-color: #fff !important;
-    --giscus-text-color: #fff !important;
-    --giscus-link-color: #fff !important;
-    --giscus-button-border: 2px solid #fff !important;
-    --giscus-button-bg: rgba(255, 255, 255, 0.04) !important;
-    --giscus-button-hover-bg: rgba(255, 255, 255, 0.08) !important;
-    --giscus-comment-box-bg: rgba(255, 255, 255, 0.04) !important;
-    --giscus-input-bg: rgba(255, 255, 255, 0.04) !important;
-    --giscus-input-border: 2px solid #fff !important;
-    --giscus-comment-box-border: 2px solid #fff !important;
-}
-
-/* Additional Giscus overrides for better visibility */
-.giscus-frame iframe {
-    border: none !important;
-}
-
-.giscus-frame * {
-    border-width: 2px !important;
 }
 
 /* XKCD Comic */
