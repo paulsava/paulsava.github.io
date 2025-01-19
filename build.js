@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const marked = require('marked');
+const readingTime = require('reading-time');
 
 // Function to generate RSS feed
 async function generateRSSFeed(blogPosts) {
@@ -94,11 +95,13 @@ async function buildSite() {
             console.log('Processing blog post:', file);
             const content = await fs.readFile(`./src/blog/${file}`, 'utf-8');
             const { content: parsedContent, metadata } = parseFrontmatter(content);
+            const stats = readingTime(parsedContent);
             blogPosts.push({
                 file,
                 title: metadata.title,
                 date: metadata.date,
                 content: parsedContent,
+                readingTime: Math.ceil(stats.minutes),
                 metadata
             });
         }
@@ -219,7 +222,10 @@ async function buildSite() {
             blogPosts.map(post => `
             <a href="blog/${post.file.replace('.md', '.html')}" class="blog-entry">
                 <h2>${post.title}</h2>
-                <div class="blog-date">${post.date}</div>
+                <div class="blog-meta">
+                    <span class="blog-date">${post.date}</span>
+                    <span class="reading-time">${post.readingTime} min read</span>
+                </div>
                 ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
             </a>
             `).join('\n')
