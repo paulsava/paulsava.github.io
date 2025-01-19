@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paul Sava - AI Security Researcher at Fraunhofer AISEC</title>
     
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://github.com">
+    <link rel="preconnect" href="https://scholar.google.com">
+    <link rel="dns-prefetch" href="https://github.com">
+    <link rel="dns-prefetch" href="https://scholar.google.com">
+    <link rel="canonical" href="https://paulsava.github.io/">
+    
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -36,8 +43,29 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Umami Analytics (Privacy-friendly) -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>
+    
+    <!-- Skip to main content for accessibility -->
+    <style>
+        .skip-to-main {
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            padding: 1em;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+        }
+        .skip-to-main:focus {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
 </head>
 <body>
+    <a href="#main" class="skip-to-main">Skip to main content</a>
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -66,16 +94,16 @@
             <div class="header-text">
                 <p>i am a social vegan. i avoid meet.</p>
                 <nav>
-                    <a href="index.html">Home</a>
-                    <a href="publications.html">Publications</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
+                    <a href="index.html" aria-current="page">Home</a>
+                    <a href="publications.html" aria-label="View my publications">Publications</a>
+                    <a href="projects.html" aria-label="View my projects">Projects</a>
+                    <a href="blog.html" aria-label="Read my blog">Blog</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
         <section id="intro">
             <p>Hey there! I'm Paul, and you've just stumbled upon my little corner of the internet.</p>
             <p>This site isn't trying to win any design awards - it's just a simple space where I share my work, thoughts, and the things that keep me busy.</p>
@@ -110,6 +138,7 @@
             <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
             <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
         </p>
+        <p><a href="impressum.html">Impressum</a> / <a href="impressum-de.html">Impressum (DE)</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
         <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
 </body>

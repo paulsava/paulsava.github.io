@@ -112,7 +112,9 @@ async function buildSite() {
     const headerTemplate = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">`;
+    <link rel="stylesheet" href="styles.css">
+    <!-- Umami Analytics (Privacy-friendly) -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>`;
 
     // Common footer template
     const footerTemplate = `
