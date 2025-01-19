@@ -40,6 +40,24 @@
         </p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum.html">Impressum</a> / <a href="impressum-de.html">Impressum (DE)</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
     </footer>
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
+
     <script>
     document.querySelector('.theme-toggle').addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
