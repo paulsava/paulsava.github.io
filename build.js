@@ -279,7 +279,10 @@ async function buildSite() {
             </div>
 
             <h1>${post.title}</h1>
-            <div class="blog-date">${post.date}</div>
+            <div class="blog-meta">
+                <span class="blog-date">${post.date}</span>
+                <span class="reading-time">${post.readingTime} min read</span>
+            </div>
 
             <hr class="separator" />
 
