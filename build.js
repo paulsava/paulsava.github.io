@@ -117,6 +117,7 @@ async function buildSite() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Umami Analytics (Privacy-friendly) -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>`;
 
@@ -163,21 +164,36 @@ async function buildSite() {
     // Common footer template (English)
     const footerTemplate = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
+        <p>© 2024 Paul Sava · 
+           <a href="mailto:mail@paulsava.com" title="Email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a> · 
+           <a href="https://github.com/paulsava" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a> · 
+           <a href="https://twitter.com/_psava" title="X (Twitter)" aria-label="Follow me on X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a> · 
+           <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="View my publications on Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        </p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
     </footer>`;
 
     // German footer template
     const footerTemplateDE = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">E-Mail</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
+        <p>© 2024 Paul Sava · 
+           <a href="mailto:mail@paulsava.com" title="E-Mail" aria-label="Schreiben Sie mir eine E-Mail"><i class="fas fa-envelope"></i></a> · 
+           <a href="https://github.com/paulsava" title="GitHub" aria-label="Besuchen Sie mein GitHub-Profil"><i class="fab fa-github"></i></a> · 
+           <a href="https://twitter.com/_psava" title="X (Twitter)" aria-label="Folgen Sie mir auf X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a> · 
+           <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="Sehen Sie meine Publikationen auf Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        </p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum-de.html">Impressum</a> · <a href="datenschutz.html">Datenschutzerklärung</a></p>
     </footer>`;
 
     // Blog post footer template (with relative paths)
     const blogPostFooterTemplate = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
+        <p>© 2024 Paul Sava · 
+           <a href="mailto:mail@paulsava.com" title="Email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a> · 
+           <a href="https://github.com/paulsava" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a> · 
+           <a href="https://twitter.com/_psava" title="X (Twitter)" aria-label="Follow me on X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a> · 
+           <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="View my publications on Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        </p>
         <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="../impressum.html">Impressum</a> · <a href="../privacy.html">Privacy Policy</a></p>
     </footer>`;
 
