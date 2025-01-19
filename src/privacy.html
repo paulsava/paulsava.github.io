@@ -36,20 +36,27 @@
             <h1>Privacy Policy</h1>
             
             <h2>1. Data Protection Overview</h2>
-            <p>This privacy policy explains the type, scope, and purpose of personal data processing on my website. Personal data is any information that can identify an individual.</p>
+            <p>This privacy policy explains the type, scope, and purpose of personal data processing on my website. Personal data is any information that can identify an individual. This privacy policy complies with the General Data Protection Regulation (GDPR) and German data protection regulations.</p>
 
-            <h2>2. Responsible Party</h2>
+            <h2>2. Legal Basis for Processing</h2>
+            <p>The processing of personal data on this website is based on the following legal grounds under Art. 6(1) GDPR:</p>
+            <ul>
+                <li>Art. 6(1)(f) GDPR (legitimate interests) for basic hosting and website analytics</li>
+                <li>Art. 6(1)(a) GDPR (consent) where applicable</li>
+            </ul>
+
+            <h2>3. Responsible Party</h2>
             <p>Paul-Andrei Sava<br>
             Vogelweidestrasse 5<br>
             81677 Munich<br>
             Germany<br>
             Email: mail@paulsava.com</p>
 
-            <h2>3. Hosting</h2>
-            <p>This website is hosted on GitHub Pages. GitHub may collect and store technical information including IP addresses. For more information, please refer to GitHub's privacy policy: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>.</p>
+            <h2>4. Hosting and Data Transfer to Third Countries</h2>
+            <p>This website is hosted on GitHub Pages, operated by GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. When you visit this website, your browser automatically connects to GitHub's servers, which may process your IP address and other technical data. This data transfer to the USA is protected by GitHub's standard contractual clauses under Art. 46(2)(c) GDPR. For more information, please refer to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub's Privacy Statement</a>.</p>
 
-            <h2>4. Analytics</h2>
-            <p>This website uses Umami Analytics (cloud.umami.is), a privacy-friendly analytics solution. Umami does not use cookies and does not collect any personal data. The following information is collected anonymously:</p>
+            <h2>5. Analytics</h2>
+            <p>This website uses Umami Analytics (cloud.umami.is), a privacy-friendly analytics solution hosted in the European Union. Umami does not use cookies and collects only anonymous data based on our legitimate interest to improve our website (Art. 6(1)(f) GDPR). The following information is collected anonymously:</p>
             <ul>
                 <li>Pages visited</li>
                 <li>Referrer</li>
@@ -59,22 +66,26 @@
             </ul>
             <p>This data is used to improve the website and cannot be traced back to individual users.</p>
 
-            <h2>5. Your Rights</h2>
+            <h2>6. Data Retention</h2>
+            <p>Any collected anonymous analytics data is retained for a maximum of 12 months. Server logs maintained by GitHub may be retained according to their data retention policies.</p>
+
+            <h2>7. Your Rights</h2>
             <p>Under the GDPR, you have the following rights:</p>
             <ul>
-                <li>Right to information</li>
-                <li>Right to rectification</li>
-                <li>Right to erasure</li>
-                <li>Right to restrict processing</li>
-                <li>Right to data portability</li>
-                <li>Right to object</li>
+                <li>Right to information (Art. 15 GDPR)</li>
+                <li>Right to rectification (Art. 16 GDPR)</li>
+                <li>Right to erasure (Art. 17 GDPR)</li>
+                <li>Right to restrict processing (Art. 18 GDPR)</li>
+                <li>Right to data portability (Art. 20 GDPR)</li>
+                <li>Right to object (Art. 21 GDPR)</li>
+                <li>Right to withdraw consent (Art. 7(3) GDPR)</li>
             </ul>
-            <p>To exercise these rights, please contact me using the details provided in the Impressum.</p>
+            <p>To exercise these rights, please contact me using the details provided above. You also have the right to lodge a complaint with a supervisory authority if you believe that the processing of your personal data violates data protection law.</p>
 
-            <h2>6. Changes to this Privacy Policy</h2>
+            <h2>8. Changes to this Privacy Policy</h2>
             <p>I reserve the right to update this privacy policy to reflect changes in legal requirements or changes in the way I operate my website. The current version will always be available on this page.</p>
 
-            <h2>7. Contact for Privacy Matters</h2>
+            <h2>9. Contact for Privacy Matters</h2>
             <p>If you have any questions about data protection, please contact me at mail@paulsava.com.</p>
         </section>
     </main>
@@ -86,5 +97,22 @@
         </p>
         <p><a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
     </footer>
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html> 
