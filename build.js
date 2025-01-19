@@ -133,6 +133,43 @@ async function buildSite() {
     ${headerTemplate}
     <title>Blog - Paul Sava</title>
     <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
+    <style>
+        .blog-entry {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .blog-entry:hover {
+            border-color: var(--text-color);
+            transform: translateX(4px);
+        }
+        .blog-entry a {
+            text-decoration: none;
+        }
+        .blog-entry::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        .blog-entry h2 {
+            margin-top: 0;
+            color: var(--text-color);
+        }
+        .blog-date {
+            color: var(--secondary-text-color);
+            margin-bottom: 0.5rem;
+        }
+        .blog-link {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -161,13 +198,12 @@ async function buildSite() {
         ${blogPosts.length === 0 ? 
             `<div class="empty-message">No blog posts yet.</div>` :
             blogPosts.map(post => `
-            <div class="blog-entry">
-                <h2>${post.title}</h2>
-                <div class="blog-date">${post.date}</div>
-                <div class="blog-link">
-                    <a href="blog/${post.file.replace('.md', '.html')}">[ read more ]</a>
+            <a href="blog/${post.file.replace('.md', '.html')}">
+                <div class="blog-entry">
+                    <h2>${post.title}</h2>
+                    <div class="blog-date">${post.date}</div>
                 </div>
-            </div>
+            </a>
             `).join('\n')
         }
     </main>
