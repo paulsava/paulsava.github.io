@@ -563,19 +563,20 @@ nav {
 }
 
 .blog-meta {
-    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
     font-style: italic;
     opacity: 0.7;
-    margin: 1ch 0;
+    margin: 0;
 }
 
 .blog-date, .reading-time {
-    display: inline;
+    display: inline-block;
 }
 
 .reading-time:before {
-    content: " · ";
-    margin: 0 0.5ch;
+    content: "·";
 }
 
 .blog-entry .blog-description {
