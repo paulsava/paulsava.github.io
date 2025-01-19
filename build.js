@@ -64,7 +64,11 @@ async function buildSite() {
         'assets/favicon/favicon-16x16.png',
         'assets/favicon/android-chrome-192x192.png',
         'assets/favicon/android-chrome-512x512.png',
-        'assets/favicon/site.webmanifest'
+        'assets/favicon/site.webmanifest',
+        'impressum.html',
+        'impressum-de.html',
+        'privacy.html',
+        'datenschutz.html'
     ];
 
     for (const file of staticFiles) {
@@ -159,23 +163,17 @@ async function buildSite() {
     // Common footer template
     const footerTemplate = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
-            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
-            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
-        </p>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
         <p><a href="impressum.html">Impressum</a> / <a href="impressum-de.html">Impressum (DE)</a> · <a href="privacy.html">Privacy Policy</a> / <a href="datenschutz.html">Datenschutzerklärung</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // Blog post footer template (with relative paths)
     const blogPostFooterTemplate = `
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> ·
-            <a href="https://github.com/paulsava" title="GitHub Profile" aria-label="Visit my GitHub profile">GitHub</a> ·
-            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar Profile" aria-label="View my publications on Google Scholar">Google Scholar</a> 
-        </p>
+        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
         <p><a href="../impressum.html">Impressum</a> / <a href="../impressum-de.html">Impressum (DE)</a> · <a href="../privacy.html">Privacy Policy</a> / <a href="../datenschutz.html">Datenschutzerklärung</a></p>
-        <p class="footer-credit">Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // Blog listing template
