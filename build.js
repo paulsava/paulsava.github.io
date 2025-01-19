@@ -2,6 +2,52 @@ const fs = require('fs').promises;
 const path = require('path');
 const marked = require('marked');
 
+// Function to generate RSS feed
+async function generateRSSFeed(blogPosts) {
+    const websiteUrl = 'https://paulsava.github.io';
+    const feedUrl = `${websiteUrl}/feed.xml`;
+    
+    const rssItems = blogPosts.map(post => {
+        const postUrl = `${websiteUrl}/blog/${post.file.replace('.md', '.html')}`;
+        const description = post.content.split('\n').slice(0, 3).join('\n'); // First 3 lines as description
+        
+        return `
+        <item>
+            <title>${escapeXml(post.title)}</title>
+            <link>${postUrl}</link>
+            <guid>${postUrl}</guid>
+            <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+            <description>${escapeXml(marked.parse(description))}</description>
+        </item>`;
+    }).join('\n');
+
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Paul Sava's Blog</title>
+        <link>${websiteUrl}</link>
+        <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
+        <description>Paul Sava's personal blog</description>
+        <language>en-us</language>
+        ${rssItems}
+    </channel>
+</rss>`;
+
+    await fs.writeFile('./public/feed.xml', rss);
+}
+
+function escapeXml(unsafe) {
+    return unsafe.replace(/[<>&'"]/g, c => {
+        switch (c) {
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
+        }
+    });
+}
+
 async function buildSite() {
     console.log('Starting build...');
     
@@ -58,6 +104,9 @@ async function buildSite() {
 
     // Sort by date
     blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Generate RSS feed
+    await generateRSSFeed(blogPosts);
 
     // Common header template
     const headerTemplate = `
@@ -492,31 +541,6 @@ async function buildSite() {
 </html>`;
 
     await fs.writeFile('./public/index.html', indexTemplate);
-
-    // Generate RSS Feed
-    console.log('Generating RSS feed...');
-    const rssTemplate = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Paul Sava's Blog</title>
-        <description>Thoughts on AI Security, Machine Learning, and beyond</description>
-        <link>https://paulsava.github.io</link>
-        <atom:link href="https://paulsava.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>${new Date().toUTCString()}</pubDate>
-        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-        <generator>GitHub Actions RSS Generator</generator>
-        ${blogPosts.map(post => `
-        <item>
-            <title>${post.metadata.title}</title>
-            <link>https://paulsava.github.io/blog/${post.file.replace('.md', '.html')}</link>
-            <pubDate>${new Date(post.metadata.date).toUTCString()}</pubDate>
-            <guid isPermaLink="true">https://paulsava.github.io/blog/${post.file.replace('.md', '.html')}</guid>
-            <description>${post.metadata.description || post.content.substring(0, 200) + '...'}</description>
-        </item>`).join('\n        ')}
-    </channel>
-</rss>`;
-
-    await fs.writeFile('./public/feed.xml', rssTemplate);
 
     console.log('Build complete!');
 }
