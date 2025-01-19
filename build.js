@@ -210,6 +210,23 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>`;
 
@@ -276,6 +293,23 @@ async function buildSite() {
         </div>
     </main>
     ${blogPostFooterTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="../privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>`;
 
@@ -331,6 +365,23 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>`;
 
@@ -388,6 +439,23 @@ async function buildSite() {
         }
     </main>
     ${footerTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>`;
 
@@ -496,6 +564,23 @@ async function buildSite() {
     </main>
 
     ${footerTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>`;
 
