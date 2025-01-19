@@ -584,3 +584,19 @@ nav {
 .title-section .rss-link:hover {
     text-decoration: underline;
 } 
+
+/* Comments section */
+.comments-section {
+    margin: 4ch 0 2ch 0;
+}
+
+.comments-section h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 2ch 0;
+}
+
+/* Giscus iframe container */
+.giscus {
+    margin-top: 2ch;
+} 
