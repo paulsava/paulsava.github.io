@@ -367,6 +367,9 @@ nav {
     height: auto;
     display: block;
     margin: 1.5rem auto;
+    border: 1px solid var(--border-color, #fff);
+    padding: 2ch;
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .blog-post h2 {

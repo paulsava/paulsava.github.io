@@ -17,9 +17,9 @@ One of my resolutions for 2025: Post something every month, even if it's brief.
 
 Let's see how this goes.
 
-
-![XKCD comic about New Year's resolutions](https://imgs.xkcd.com/comics/resolution.png)
-
-*Source: [XKCD #1154](https://xkcd.com/1154)*
+<div class="xkcd-comic">
+    <img src="https://imgs.xkcd.com/comics/resolution.png" alt="XKCD comic about New Year's resolutions">
+    <div class="comic-credit">Source: <a href="https://xkcd.com/1154">XKCD #1154</a></div>
+</div>
 
 
