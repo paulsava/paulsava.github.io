@@ -28,12 +28,10 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: |
-          npm install marked
-          npm install
+        run: npm install
 
       - name: Build Site
-        run: node build.js
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

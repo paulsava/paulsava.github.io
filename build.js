@@ -2,6 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const marked = require('marked');
 const readingTime = require('reading-time');
+const generateBanner = require('./generate-banner');
 
 // Function to generate RSS feed
 async function generateRSSFeed(blogPosts) {
@@ -55,7 +56,73 @@ async function buildSite() {
     // Ensure directories exist
     await fs.mkdir('./public', { recursive: true });
     await fs.mkdir('./public/blog', { recursive: true });
+    await fs.mkdir('./public/assets/banners', { recursive: true });
     
+    // Copy Profile.png to the temp directory for banner generation
+    await fs.copyFile('./src/Profile.png', './Profile.png');
+    
+    // Generate banners for main pages
+    console.log('Generating page banners...');
+    await generateBanner('Home', './public/assets/banners/home.png', 'my internet place (since rent is too high for a real one)');
+    await generateBanner('Blog', './public/assets/banners/blog.png', 'random thoughts on research, coffee, films & whatever');
+    await generateBanner('Publications', './public/assets/banners/publications.png', 'my unpaywalled publications ;)');
+    await generateBanner('Projects', './public/assets/banners/projects.png', 'some of my side-projects');
+
+    // Clean up temp file
+    await fs.unlink('./Profile.png');
+
+    // Update meta tags template with dynamic banner
+    const getMetaTags = (title, description, bannerPath) => `
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="${title}">
+    <meta name="description" content="${description}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paulsava.github.io${bannerPath.replace('./public', '')}">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${description}">
+    <meta property="og:image" content="https://paulsava.github.io${bannerPath.replace('./public', '')}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://paulsava.github.io${bannerPath.replace('./public', '')}">
+    <meta property="twitter:title" content="${title}">
+    <meta property="twitter:description" content="${description}">
+    <meta property="twitter:image" content="https://paulsava.github.io${bannerPath.replace('./public', '')}">`;
+
+    // Update header template to include dynamic meta tags
+    const headerTemplate = (title, description, bannerPath) => `
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    ${getMetaTags(title, description, bannerPath)}
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://github.com">
+    <link rel="preconnect" href="https://scholar.google.com">
+    <link rel="dns-prefetch" href="https://github.com">
+    <link rel="dns-prefetch" href="https://scholar.google.com">
+    <link rel="canonical" href="https://paulsava.github.io/">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>`;
+
     // Copy static files (only assets, not HTML)
     const staticFiles = [
         'styles.css',
@@ -69,8 +136,7 @@ async function buildSite() {
         'impressum.html',
         'impressum-de.html',
         'privacy.html',
-        'datenschutz.html',
-        'index.html'
+        'datenschutz.html'
     ];
 
     for (const file of staticFiles) {
@@ -117,71 +183,6 @@ async function buildSite() {
     await generateRSSFeed(blogPosts);
 
     // Common header template
-    const headerTemplate = `
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Performance optimizations -->
-    <link rel="preconnect" href="https://github.com">
-    <link rel="preconnect" href="https://scholar.google.com">
-    <link rel="dns-prefetch" href="https://github.com">
-    <link rel="dns-prefetch" href="https://scholar.google.com">
-    <link rel="canonical" href="https://paulsava.github.io/">
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
-    
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Paul Sava | AI & Security Researcher at Fraunhofer AISEC">
-    <meta name="description" content="Researcher focusing on AI & Security, with expertise in Large Language Models and Autonomous Agents. PhD candidate at Technical University of Munich (TUM).">
-    <meta name="keywords" content="AI Security, Machine Learning, LLM Security, Privacy, TUM, Fraunhofer AISEC, Paul Sava, Research">
-    <meta name="author" content="Paul Sava">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://paulsava.github.io/">
-    <meta property="og:title" content="Paul Sava | AI & Security Researcher at Fraunhofer AISEC">
-    <meta property="og:description" content="Researcher focusing on AI & Security, with expertise in Large Language Models and Autonomous Agents. PhD candidate at Technical University of Munich (TUM).">
-    <meta property="og:image" content="https://paulsava.github.io/Profile.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://paulsava.github.io/">
-    <meta property="twitter:title" content="Paul Sava | AI & Security Researcher at Fraunhofer AISEC">
-    <meta property="twitter:description" content="Researcher focusing on AI & Security, with expertise in Large Language Models and Autonomous Agents. PhD candidate at Technical University of Munich (TUM).">
-    <meta property="twitter:image" content="https://paulsava.github.io/Profile.png">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Umami Analytics (Privacy-friendly) -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>
-
-    <!-- Skip to main content for accessibility -->
-    <style>
-        .skip-to-main {
-            position: absolute;
-            left: -9999px;
-            z-index: 999;
-            padding: 1em;
-            background-color: #1a1a1a;
-            color: white;
-            text-decoration: none;
-        }
-        .skip-to-main:focus {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    </style>`;
-
-    // Common header structure template
     const headerStructureTemplate = `
     <header>
         <div class="header-content">
@@ -250,33 +251,16 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    ${headerTemplate}
+    ${headerTemplate(
+        'Blog - Paul Sava',
+        'Personal blog about AI Security, research, and other interests',
+        './public/assets/banners/blog.png'
+    )}
     <title>Blog - Paul Sava</title>
-    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
 </head>
 <body>
-    <a href="#main" class="skip-to-main">Skip to main content</a>
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Blog",
-        "name": "Paul Sava's Blog",
-        "description": "Personal blog about AI Security, research, and other interests",
-        "url": "https://paulsava.github.io/blog.html",
-        "author": {
-            "@type": "Person",
-            "name": "Paul Sava",
-            "jobTitle": "AI Security Researcher",
-            "affiliation": {
-                "@type": "Organization",
-                "name": "Fraunhofer AISEC"
-            }
-        }
-    }
-    </script>
-
     ${headerStructureTemplate}
-    <main id="main" tabindex="-1">
+    <main>
         <div class="title-section">
             <h1>Blog Posts</h1>
             <a href="/feed.xml" class="rss-link">[ rss feed ]</a>
@@ -289,7 +273,6 @@ async function buildSite() {
                     <h2>${post.title}</h2>
                     <div class="blog-meta">
                         <span class="blog-date">${post.date}</span>
-                        ${post.readingTime ? `<span class="reading-time">${post.readingTime} min read</span>` : ''}
                     </div>
                     ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
                 </a>
@@ -327,15 +310,23 @@ async function buildSite() {
         
         console.log('Building blog post:', post.file);
         const html = marked.parse(post.content);
-        const wordCount = post.content.trim().split(/\s+/).length;
-        const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute
+        const bannerPath = `./public/assets/banners/blog-${post.file.replace('.md', '.png')}`;
+
+        // Copy Profile.png to temp directory for banner generation
+        await fs.copyFile('./src/Profile.png', './Profile.png');
+        await generateBanner(post.title, bannerPath, post.metadata.description);
+        await fs.unlink('./Profile.png');
+
         const postTemplate = `
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    ${headerTemplate.replace('href="styles.css"', 'href="../styles.css"')}
+    ${headerTemplate(
+        `${post.title} - Paul Sava`,
+        post.metadata.description || 'Blog post by Paul Sava',
+        bannerPath
+    ).replace('href="styles.css"', 'href="../styles.css"')}
     <title>${post.title} - Paul Sava</title>
-    <link rel="alternate" type="application/rss+xml" title="Paul Sava's Blog" href="/feed.xml">
 </head>
 <body>
     ${blogPostHeaderTemplate}
@@ -433,32 +424,16 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    ${headerTemplate}
+    ${headerTemplate(
+        'Publications - Paul Sava',
+        'Academic publications in AI Security, LLM Security, and Privacy',
+        './public/assets/banners/publications.png'
+    )}
     <title>Publications - Paul Sava</title>
 </head>
 <body>
-    <a href="#main" class="skip-to-main">Skip to main content</a>
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "CollectionPage",
-        "name": "Publications by Paul Sava",
-        "description": "Academic publications in AI Security, LLM Security, and Privacy",
-        "url": "https://paulsava.github.io/publications.html",
-        "author": {
-            "@type": "Person",
-            "name": "Paul Sava",
-            "jobTitle": "AI Security Researcher",
-            "affiliation": {
-                "@type": "Organization",
-                "name": "Fraunhofer AISEC"
-            }
-        }
-    }
-    </script>
-
     ${headerStructureTemplate}
-    <main id="main" tabindex="-1">
+    <main>
         <h1>Publications</h1>
 
         ${publications.length === 0 ? 
@@ -469,13 +444,8 @@ async function buildSite() {
                 <div class="venue">${pub.venue}</div>
                 <div class="authors">${pub.authors}</div>
                 <div class="controls">
-                    ${pub.pdf ? `<a href="${pub.pdf}" class="pdf-button" aria-label="Download PDF of ${pub.title}">[PDF]</a>` : ''}
-                    ${pub.code ? `<a href="${pub.code}" class="code-button" aria-label="View code for ${pub.title}">[Code]</a>` : ''}
+                    ${pub.pdf ? `<a href="${pub.pdf}" class="pdf-button">[PDF]</a>` : ''}
                 </div>
-                ${pub.abstract ? `<details>
-                    <summary>Abstract</summary>
-                    <div class="abstract">${marked.parse(pub.abstract)}</div>
-                </details>` : ''}
             </div>
             `).join('\n')
         }
@@ -493,6 +463,7 @@ async function buildSite() {
             localStorage.setItem('analytics-notice-dismissed', 'true');
         }
 
+        // Check if notice was previously dismissed
         if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
             document.getElementById('analytics-notice').classList.add('hidden');
         }
@@ -529,32 +500,16 @@ async function buildSite() {
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    ${headerTemplate}
+    ${headerTemplate(
+        'Projects - Paul Sava',
+        'Personal and research projects in AI, security, and other interests',
+        './public/assets/banners/projects.png'
+    )}
     <title>Projects - Paul Sava</title>
 </head>
 <body>
-    <a href="#main" class="skip-to-main">Skip to main content</a>
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "CollectionPage",
-        "name": "Projects by Paul Sava",
-        "description": "Personal and research projects in AI, security, and other interests",
-        "url": "https://paulsava.github.io/projects.html",
-        "author": {
-            "@type": "Person",
-            "name": "Paul Sava",
-            "jobTitle": "AI Security Researcher",
-            "affiliation": {
-                "@type": "Organization",
-                "name": "Fraunhofer AISEC"
-            }
-        }
-    }
-    </script>
-
     ${headerStructureTemplate}
-    <main id="main" tabindex="-1">
+    <main>
         <h1>Projects</h1>
 
         ${projects.length === 0 ? 
@@ -564,7 +519,7 @@ async function buildSite() {
                 <h2>${proj.title}</h2>
                 <div class="project-meta">
                     <span class="status">${proj.status}</span>
-                    ${proj.github ? `<a href="${proj.github}" class="github-link" aria-label="View ${proj.title} on GitHub">[ github ]</a>` : ''}
+                    <a href="${proj.github}" class="github-link">[ github ]</a>
                 </div>
                 <div class="description">
                     ${marked.parse(proj.description)}
@@ -586,6 +541,7 @@ async function buildSite() {
             localStorage.setItem('analytics-notice-dismissed', 'true');
         }
 
+        // Check if notice was previously dismissed
         if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
             document.getElementById('analytics-notice').classList.add('hidden');
         }
@@ -594,6 +550,135 @@ async function buildSite() {
 </html>`;
 
     await fs.writeFile('./public/projects.html', projectsTemplate);
+
+    // Generate index page
+    const indexTemplate = `
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    ${headerTemplate(
+        'Paul Sava - AI Security Researcher at Fraunhofer AISEC',
+        'AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.',
+        './public/assets/banners/home.png'
+    )}
+    <title>Paul Sava - AI Security Researcher at Fraunhofer AISEC</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Paul Sava - AI Security Researcher">
+    <meta name="description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta name="keywords" content="AI Security, Machine Learning, LLM Security, Privacy, TUM, Fraunhofer AISEC, Paul Sava, Research">
+    <meta name="author" content="Paul Sava">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paulsava.github.io/">
+    <meta property="og:title" content="Paul Sava - AI Security Researcher">
+    <meta property="og:description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta property="og:image" content="https://paulsava.github.io/Profile.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://paulsava.github.io/">
+    <meta property="twitter:title" content="Paul Sava - AI Security Researcher">
+    <meta property="twitter:description" content="AI Security Researcher at Fraunhofer AISEC, focusing on LLM security, autonomous AI agents, and private machine learning. PhD candidate at TUM.">
+    <meta property="twitter:image" content="https://paulsava.github.io/Profile.png">
+</head>
+<body>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Paul Sava",
+        "jobTitle": "AI Security Researcher",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "Fraunhofer AISEC"
+        },
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Technical University of Munich"
+        },
+        "description": "AI Security Researcher focusing on LLM security, autonomous AI agents, and private machine learning",
+        "url": "https://paulsava.github.io"
+    }
+    </script>
+
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
+            </div>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <p>Hey there! I'm Paul, and you've just stumbled upon my little corner of the internet.</p>
+            <p>This site isn't trying to win any design awards - it's just a simple space where I share my work, thoughts, and the things that keep me busy.</p>
+        </section>
+
+        <section id="what-i-do">
+            <h2>What I Do</h2>
+            <p>Right now, I'm diving deep into AI research at <a href="https://www.aisec.fraunhofer.de/">Fraunhofer AISEC</a> while working on my PhD at <a href="https://www.tum.de/">TUM</a> with <a href="https://www.sec.in.tum.de/i20/people/claudia-eckert">Prof. Dr. Claudia Eckert</a>. I spend most of my time thinking about:</p>
+            <ul>
+                <li>→ Making large language models more secure (and figuring out when they're not)</li>
+                <li>→ Teaching AI agents to be autonomous (but not too autonomous)</li>
+                <li>→ Keeping machine learning private (because some secrets are worth keeping)</li>
+                <li>→ Finding ways to break AI systems (so we can make them stronger)</li>
+            </ul>
+        </section>
+
+        <section id="background">
+            <h2>My Background</h2>
+            <p>I spent my university years at TUM, getting both my Bachelor's and Master's there. While my main focus was on ML and AI Security, I also dove into High Performance and Quantum Computing. I started at Fraunhofer AISEC as a student assistant in 2021, and after finishing my Master's in 2024, I joined the team full-time.</p>
+        </section>
+
+        <section id="beyond">
+            <h2>Beyond the Code</h2>
+            <p>When I'm not doing research, I like to mess around with coffee brewing. It's become a bit of a hobby - trying different beans, tweaking recipes, that kind of thing. Maybe I'll open a small coffee shop someday, who knows.</p>
+            <p>Got a few projects I want to get into - building an aeroponic setup, getting into woodworking, and playing around with 3D printing. Also picked up crocheting recently, which is surprisingly chill.</p>
+            <p>In my downtime, I dig through obscure movie collections and hunt for underground music. Always fun to find something different that most people haven't heard of.</p>
+        </section>
+    </main>
+
+    ${footerTemplate}
+
+    <div id="analytics-notice" class="analytics-notice">
+        <p>This website uses Umami Analytics, a privacy-friendly solution that doesn't use cookies or collect personal data. <a href="privacy.html#analytics">Learn more</a></p>
+        <button onclick="dismissNotice()">Got it</button>
+    </div>
+
+    <script>
+        function dismissNotice() {
+            document.getElementById('analytics-notice').classList.add('hidden');
+            localStorage.setItem('analytics-notice-dismissed', 'true');
+        }
+
+        // Check if notice was previously dismissed
+        if (localStorage.getItem('analytics-notice-dismissed') === 'true') {
+            document.getElementById('analytics-notice').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>`;
+
+    await fs.writeFile('./public/index.html', indexTemplate);
 
     console.log('Build complete!');
 }

@@ -16,3 +16,4 @@ public/
 *.swo
 .DS_Store
 Thumbs.db 
+.aider*

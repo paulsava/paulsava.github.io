@@ -1,7 +1,7 @@
 {
-  "name": "the-monospace-web",
+  "name": "paulsava.github.io",
   "version": "1.0.0",
-  "description": "Personal website with markdown support",
+  "description": "Personal website with dynamic banner generation",
   "main": "build.js",
   "scripts": {
     "build": "node build.js",
@@ -10,7 +10,12 @@
     "clean-build": "npm run clean && npm run build"
   },
   "dependencies": {
-    "marked": "^4.0.0",
+    "marked": "^11.1.1",
+    "puppeteer": "^21.7.0",
     "reading-time": "^1.5.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
