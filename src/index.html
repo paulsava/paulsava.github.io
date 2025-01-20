@@ -43,7 +43,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Umami Analytics (Privacy-friendly) -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="85fb5f51-451a-4b90-8f07-63d7d37a8014"></script>
@@ -94,7 +94,7 @@
         "@context": "http://schema.org",
         "@type": "Person",
         "name": "Paul Sava",
-        "jobTitle": "AI & Security Researcher",
+        "jobTitle": "AI Security Researcher",
         "affiliation": {
             "@type": "Organization",
             "name": "Fraunhofer AISEC"
@@ -108,35 +108,23 @@
     }
     </script>
 
-    <div class="container">
-        <div class="profile">
-            <img src="assets/profile.png" alt="Profile picture" class="profile-pic">
-            <h1>PAUL SAVA</h1>
-            <p>i am a social vegan. i avoid meet.</p>
-            
-            <!-- Add social media icons -->
-            <div class="social-icons">
-                <a href="https://github.com/paulsava" target="_blank" aria-label="GitHub Profile">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://twitter.com/_psava" target="_blank" aria-label="Twitter Profile">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" target="_blank" aria-label="Google Scholar Profile">
-                    <i class="fas fa-graduation-cap"></i>
-                </a>
+    <header>
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="Profile.png" alt="Paul Sava" class="profile">
+                <h1>PAUL SAVA</h1>
             </div>
-
-            <hr class="separator">
-            
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html">Projects</a>
-                <a href="blog.html">Blog</a>
-            </nav>
+            <div class="header-text">
+                <p>i am a social vegan. i avoid meet.</p>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </div>
         </div>
-    </div>
+    </header>
 
     <main id="main" tabindex="-1">
         <section id="intro">
@@ -152,7 +140,7 @@
 
         <section id="background">
             <h2>Current Work</h2>
-            <p>At <a href="https://www.aisec.fraunhofer.de/">Fraunhofer AISEC</a> and <a href="https://www.tum.de/">TUM</a>, I work on:</p>
+            <p>At <a href="https://www.aisec.fraunhofer.de/">Fraunhofer AISEC</a> and <a href="https://www.tum.de/">TUM</a>, I work with <a href="https://www.sec.in.tum.de/i20/people/claudia-eckert">Prof. Dr. Claudia Eckert</a> on:</p>
             <ul>
                 <li>→ Uncertainty quantification in large language models</li>
                 <li>→ Privacy-preserving generative AI</li>
@@ -167,8 +155,13 @@
     </main>
 
     <footer>
-        <p>© 2024 Paul Sava · <a href="mailto:mail@paulsava.com">email</a> · <a href="https://github.com/paulsava">GitHub</a> · <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ">Google Scholar</a></p>
-        <p>Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a> · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy Policy</a></p>
+        <p><a href="mailto:mail@paulsava.com" title="Email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a> · 
+           <a href="https://github.com/paulsava" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a> · 
+           <a href="https://twitter.com/_psava" title="X (Twitter)" aria-label="Follow me on X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a> · 
+           <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="View my publications on Google Scholar"><i class="fas fa-graduation-cap"></i></a> · 
+           <a href="impressum.html">Impressum</a> · 
+           <a href="privacy.html">Privacy Policy</a></p>
+        <p>© 2024 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>
 
     <div id="analytics-notice" class="analytics-notice">
