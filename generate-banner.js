@@ -3,9 +3,9 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function generateBanner(title, outputPath, description = 'Personal Website') {
-    // Read and convert the image to base64
-    const imageBuffer = await fs.readFile(path.join(process.cwd(), 'src', 'Profile.png'));
-    const base64Image = imageBuffer.toString('base64');
+    // Copy profile picture to public directory
+    const publicProfilePath = path.join(process.cwd(), 'public', 'Profile.png');
+    await fs.copyFile(path.join(process.cwd(), 'src', 'Profile.png'), publicProfilePath);
 
     const html = `
     <!DOCTYPE html>
@@ -47,114 +47,106 @@ async function generateBanner(title, outputPath, description = 'Personal Website
                 z-index: 2;
                 height: 100%;
                 width: 100%;
-                display: grid;
-                grid-template-columns: 400px 1fr;
-            }
-
-            .left-panel {
-                background: rgba(255, 255, 255, 0.02);
-                border-right: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 48px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 24px;
-                position: relative;
-            }
-
-            .left-panel::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 100px;
-                height: 100%;
-                background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2));
-            }
-
-            .profile {
-                width: 200px;
-                height: 200px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 4px;
-                object-fit: cover;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            }
-
-            .name {
-                font-size: 24px;
-                font-weight: bold;
-                letter-spacing: 2px;
-                opacity: 0.9;
-            }
-
-            .right-panel {
                 padding: 64px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                position: relative;
+                justify-content: space-between;
             }
 
-            .right-panel::before {
-                content: '';
-                position: absolute;
-                top: 64px;
-                left: 64px;
-                width: 40px;
-                height: 2px;
-                background: rgba(255, 255, 255, 0.1);
+            .content {
+                max-width: 800px;
             }
 
             .page-title {
-                font-size: 56px;
+                font-size: 64px;
                 font-weight: bold;
                 line-height: 1.2;
-                letter-spacing: 1px;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-                opacity: 0.95;
-                margin-top: 32px;
-            }
-
-            /* Adjust title size based on length */
-            .page-title.long {
-                font-size: 48px;
-            }
-            .page-title.very-long {
-                font-size: 40px;
+                letter-spacing: 0.5px;
+                margin: 0;
+                padding: 0;
             }
 
             .subtitle {
-                font-size: 20px;
-                color: rgba(255, 255, 255, 0.6);
+                font-size: 28px;
+                color: rgba(255, 255, 255, 0.7);
                 margin-top: 24px;
-                letter-spacing: 0.5px;
                 line-height: 1.4;
-                max-width: 600px;
+            }
+
+            .profile-section {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                opacity: 0.95;
+                background: rgba(0, 0, 0, 0.2);
+                padding: 12px 24px;
+                border-radius: 6px;
+            }
+
+            .profile {
+                width: 80px;
+                height: 80px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 4px;
+                object-fit: contain;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 4px;
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+
+            .name {
+                font-size: 20px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+            }
+
+            .domain {
+                font-size: 16px;
+                opacity: 0.7;
+                margin-top: 4px;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="left-panel">
-                <img src="data:image/png;base64,${base64Image}" alt="Paul Sava" class="profile">
-                <div class="name">PAUL SAVA</div>
-            </div>
-            <div class="right-panel">
+            <div class="content">
                 <div class="page-title ${title.length > 30 ? title.length > 50 ? 'very-long' : 'long' : ''}">${title}</div>
                 <div class="subtitle">${description}</div>
+            </div>
+            <div class="profile-section">
+                <img src="file://${publicProfilePath}" alt="Paul Sava" class="profile">
+                <div>
+                    <div class="name">PAUL SAVA</div>
+                    <div class="domain">paulsava.github.io</div>
+                </div>
             </div>
         </div>
     </body>
     </html>`;
 
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        defaultViewport: {
+            width: 1200,
+            height: 630,
+            deviceScaleFactor: 2
+        }
     });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1200, height: 630 });
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+    await page.setContent(html, { 
+        waitUntil: ['networkidle0', 'load', 'domcontentloaded']
+    });
+    
+    // Wait for image to load
+    await page.evaluate(() => {
+        return new Promise((resolve) => {
+            const img = document.querySelector('.profile');
+            if (img.complete) resolve();
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+        });
+    });
     
     // Ensure directory exists
     const dir = path.dirname(outputPath);
@@ -168,7 +160,8 @@ async function generateBanner(title, outputPath, description = 'Personal Website
             y: 0,
             width: 1200,
             height: 630
-        }
+        },
+        omitBackground: false
     });
 
     await browser.close();
