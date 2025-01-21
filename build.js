@@ -273,6 +273,7 @@ async function buildSite() {
                     <h2>${post.title}</h2>
                     <div class="blog-meta">
                         <span class="blog-date">${post.date}</span>
+                        <span class="reading-time">${post.readingTime} min read</span>
                     </div>
                     ${post.metadata.description ? `<div class="blog-description">${post.metadata.description}</div>` : ''}
                 </a>
