@@ -68,6 +68,9 @@ async function buildSite() {
     await generateBanner('Publications', './public/assets/banners/publications.png', 'my unpaywalled publications ;)');
     await generateBanner('Projects', './public/assets/banners/projects.png', 'some of my side-projects');
 
+    // Clean up Puppeteer browser
+    await generateBanner.cleanup();
+
     // Clean up temp file
     await fs.unlink('./Profile.png');
 

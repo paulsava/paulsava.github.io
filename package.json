@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "marked": "^11.1.1",
-    "puppeteer": "^21.7.0",
+    "puppeteer": "^22.8.3",
     "reading-time": "^1.5.0"
   },
   "devDependencies": {},

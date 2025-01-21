@@ -2,6 +2,23 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const path = require('path');
 
+let browser = null;
+
+async function initBrowser() {
+    if (!browser) {
+        browser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            defaultViewport: {
+                width: 1200,
+                height: 630,
+                deviceScaleFactor: 2
+            }
+        });
+    }
+    return browser;
+}
+
 async function generateBanner(title, outputPath, description = 'Personal Website') {
     const profilePath = path.join(process.cwd(), 'src', 'Profile.png');
     const profileContent = await fs.readFile(profilePath, { encoding: 'base64' });
@@ -186,19 +203,12 @@ async function generateBanner(title, outputPath, description = 'Personal Website
     </body>
     </html>`;
 
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        defaultViewport: {
-            width: 1200,
-            height: 630,
-            deviceScaleFactor: 2
-        }
-    });
+    const browser = await initBrowser();
     const page = await browser.newPage();
     
     // Set content and wait for everything to load
     await page.setContent(html, { 
-        waitUntil: ['networkidle0', 'load', 'domcontentloaded']
+        waitUntil: ['networkidle0', 'domcontentloaded']
     });
     
     // Wait for fonts to load
@@ -221,8 +231,17 @@ async function generateBanner(title, outputPath, description = 'Personal Website
         omitBackground: false
     });
 
-    await browser.close();
+    await page.close();
 }
 
-// Export the function to use in build.js
-module.exports = generateBanner; 
+// Cleanup function to close browser
+async function cleanup() {
+    if (browser) {
+        await browser.close();
+        browser = null;
+    }
+}
+
+// Export the functions
+module.exports = generateBanner;
+module.exports.cleanup = cleanup; 
