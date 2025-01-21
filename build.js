@@ -68,9 +68,6 @@ async function buildSite() {
     await generateBanner('Publications', './public/assets/banners/publications.png', 'my unpaywalled publications ;)');
     await generateBanner('Projects', './public/assets/banners/projects.png', 'some of my side-projects');
 
-    // Clean up Puppeteer browser
-    await generateBanner.cleanup();
-
     // Clean up temp file
     await fs.unlink('./Profile.png');
 
@@ -701,4 +698,17 @@ function parseFrontmatter(content) {
     return { content: contentWithoutFrontmatter, metadata };
 }
 
-buildSite().catch(console.error); 
+buildSite().catch(console.error).finally(async () => {
+    try {
+        // Ensure browser is closed
+        if (generateBanner.cleanup) {
+            await generateBanner.cleanup();
+        }
+        console.log('Build complete!');
+        // Force exit after cleanup
+        process.exit(0);
+    } catch (error) {
+        console.error('Error during cleanup:', error);
+        process.exit(1);
+    }
+}); 
