@@ -63,7 +63,7 @@ async function buildSite() {
     
     // Generate banners for main pages
     console.log('Generating page banners...');
-    await generateBanner('Home', './public/assets/banners/home.png', 'my internet place (since rent is too high for a real one)');
+    await generateBanner('Home', './public/assets/banners/home.png', 'my internet place since there is no chance to buy a real one in this economy');
     await generateBanner('Blog', './public/assets/banners/blog.png', 'random thoughts on research, coffee, films & whatever');
     await generateBanner('Publications', './public/assets/banners/publications.png', 'my unpaywalled publications ;)');
     await generateBanner('Projects', './public/assets/banners/projects.png', 'some of my side-projects');

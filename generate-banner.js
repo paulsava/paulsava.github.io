@@ -3,9 +3,9 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function generateBanner(title, outputPath, description = 'Personal Website') {
-    // Copy profile picture to public directory
-    const publicProfilePath = path.join(process.cwd(), 'public', 'Profile.png');
-    await fs.copyFile(path.join(process.cwd(), 'src', 'Profile.png'), publicProfilePath);
+    const profilePath = path.join(process.cwd(), 'src', 'Profile.png');
+    const profileContent = await fs.readFile(profilePath, { encoding: 'base64' });
+    const profileDataUrl = `data:image/png;base64,${profileContent}`;
 
     const html = `
     <!DOCTYPE html>
@@ -18,7 +18,7 @@ async function generateBanner(title, outputPath, description = 'Personal Website
             body {
                 margin: 0;
                 padding: 0;
-                background: #121212;
+                background: #1a1a1a;
                 height: 630px;
                 width: 1200px;
                 font-family: 'Courier Prime', monospace;
@@ -27,7 +27,7 @@ async function generateBanner(title, outputPath, description = 'Personal Website
                 overflow: hidden;
             }
 
-            /* Grid background */
+            /* Grid background with fade */
             body::before {
                 content: '';
                 position: absolute;
@@ -38,73 +38,134 @@ async function generateBanner(title, outputPath, description = 'Personal Website
                 background-image: 
                     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-                background-size: 16px 16px;
+                background-size: 20px 20px;
                 z-index: 1;
+                mask-image: linear-gradient(to bottom, 
+                    rgba(0, 0, 0, 1) 0%,
+                    rgba(0, 0, 0, 0.8) 50%,
+                    rgba(0, 0, 0, 0.4) 100%
+                );
+            }
+
+            /* Subtle vignette */
+            body::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.2) 100%
+                );
+                z-index: 2;
             }
 
             .container {
                 position: relative;
-                z-index: 2;
-                height: 100%;
+                z-index: 3;
+                height: 630px;
                 width: 100%;
-                padding: 64px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-
-            .content {
-                max-width: 800px;
-            }
-
-            .page-title {
-                font-size: 64px;
-                font-weight: bold;
-                line-height: 1.2;
-                letter-spacing: 0.5px;
-                margin: 0;
                 padding: 0;
             }
 
+            .content {
+                position: absolute;
+                top: 60px;
+                left: 60px;
+                right: 60px;
+            }
+
+            .page-title {
+                font-size: 84px;
+                font-weight: bold;
+                line-height: 1.1;
+                letter-spacing: -1px;
+                margin: 0;
+                padding: 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0.95) 100%
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .page-title.long {
+                font-size: 64px;
+            }
+
+            .page-title.very-long {
+                font-size: 48px;
+            }
+
             .subtitle {
-                font-size: 28px;
-                color: rgba(255, 255, 255, 0.7);
-                margin-top: 24px;
+                font-size: 32px;
+                color: rgba(255, 255, 255, 0.85);
+                margin-top: 40px;
                 line-height: 1.4;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+                font-weight: 400;
+                letter-spacing: -0.5px;
+                opacity: 0.9;
             }
 
             .profile-section {
+                position: absolute;
+                bottom: 120px;
+                left: 50%;
+                transform: translateX(-50%);
                 display: flex;
                 align-items: center;
                 gap: 24px;
-                opacity: 0.95;
-                background: rgba(0, 0, 0, 0.2);
-                padding: 12px 24px;
-                border-radius: 6px;
+                background: rgba(0, 0, 0, 0.75);
+                padding: 16px 32px;
+                border-radius: 16px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                box-shadow: 
+                    0 4px 24px rgba(0, 0, 0, 0.2),
+                    0 1px 2px rgba(255, 255, 255, 0.05);
+                width: fit-content;
+                transition: all 0.3s ease;
             }
 
             .profile {
-                width: 80px;
-                height: 80px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 4px;
-                object-fit: contain;
+                width: 64px;
+                height: 64px;
+                border: 2px solid rgba(255, 255, 255, 0.15);
+                border-radius: 12px;
+                object-fit: cover;
                 background: rgba(255, 255, 255, 0.05);
                 padding: 4px;
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
+                box-shadow: 
+                    0 2px 12px rgba(0, 0, 0, 0.2),
+                    0 0 0 1px rgba(255, 255, 255, 0.05);
             }
 
             .name {
-                font-size: 20px;
+                font-size: 24px;
                 font-weight: bold;
                 letter-spacing: 0.5px;
+                margin-bottom: 4px;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0.9) 100%
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
             .domain {
-                font-size: 16px;
-                opacity: 0.7;
-                margin-top: 4px;
+                font-size: 18px;
+                opacity: 0.6;
+                letter-spacing: 0.5px;
+                color: rgba(255, 255, 255, 0.9);
             }
         </style>
     </head>
@@ -115,7 +176,7 @@ async function generateBanner(title, outputPath, description = 'Personal Website
                 <div class="subtitle">${description}</div>
             </div>
             <div class="profile-section">
-                <img src="file://${publicProfilePath}" alt="Paul Sava" class="profile">
+                <img src="${profileDataUrl}" alt="Paul Sava" class="profile">
                 <div>
                     <div class="name">PAUL SAVA</div>
                     <div class="domain">paulsava.github.io</div>
@@ -134,24 +195,20 @@ async function generateBanner(title, outputPath, description = 'Personal Website
         }
     });
     const page = await browser.newPage();
+    
+    // Set content and wait for everything to load
     await page.setContent(html, { 
         waitUntil: ['networkidle0', 'load', 'domcontentloaded']
     });
     
-    // Wait for image to load
-    await page.evaluate(() => {
-        return new Promise((resolve) => {
-            const img = document.querySelector('.profile');
-            if (img.complete) resolve();
-            img.onload = () => resolve();
-            img.onerror = () => resolve();
-        });
-    });
+    // Wait for fonts to load
+    await page.evaluate(() => document.fonts.ready);
     
     // Ensure directory exists
     const dir = path.dirname(outputPath);
     await fs.mkdir(dir, { recursive: true });
     
+    // Take screenshot
     await page.screenshot({
         path: outputPath,
         type: 'png',
