@@ -15,4 +15,4 @@ But not for Hirayama (whose name I had to look up because I'd forgotten). He cle
 
 The film feels inspiring precisely because it contrasts so starkly with the lives most of us lead—or, more accurately, the lives we let carry us along. It's a story about existence stripped of destructive ambition, restless striving, and the scarcity of compassion we so often accept. It's a meditation on letting go of what we cannot control and a gentle lesson in living fully within the present moment.
 
-I like to think this movie found me, not the other way around. And it arrived at just the right time—a reminder I hope it might someday be for you, too.
+I like to think this movie found me, not the other way around. And it arrived at just the right time — a reminder I hope it might someday be for you, too.
