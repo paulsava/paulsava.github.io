@@ -4,7 +4,7 @@ date: Wed, 29 Jan 2025
 description: In preparation of Berlinale, I think about one of my favourite films of 2023
 ---
 
-One of my favorite films from last year was Wim Wenders' Perfect Days, mostly because it stirred a quiet anxiety in me—the kind that surfaces when I realize how swiftly life seems to pass by without my noticing. And when that realization hits, it triggers a downward spiral of regret, FOMO, and frustration, emotions that build up in hidden crevices until they overflow.
+One of my favorite films from last year was Wim Wenders' Perfect Days, mostly because it stirred a quiet anxiety in me — the kind that surfaces when I realize how swiftly life seems to pass by without my noticing. And when that realization hits, it triggers a downward spiral of regret, FOMO, and frustration, emotions that build up in hidden crevices until they overflow.
 
 But not for Hirayama (whose name I had to look up because I'd forgotten). He cleans toilets, listens to cassettes, tends to tiny saplings, eats simple sandwiches, and is genuinely happy. He needs nothing beyond himself to feel content, embracing life exactly as it is.
 
