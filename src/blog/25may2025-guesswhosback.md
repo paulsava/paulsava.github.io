@@ -3,7 +3,6 @@ title: guesswhosback.mp3
 date: Sun, 25 May 2025
 description: who would have guessed i would not keep my new year's resolution, AGAIN :)
 ---
-# guesswhosback.mp3
 
 Yup, it's me again! You probably weren't expecting this grand comeback after I so easily abandoned my resolution to write at least one blog post per month. Classic me.
 
