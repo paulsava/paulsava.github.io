@@ -232,7 +232,7 @@ async function buildSite() {
            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="View my publications on Google Scholar"><i class="fas fa-graduation-cap"></i></a> · 
            <a href="impressum.html">Impressum</a> · 
            <a href="privacy.html">Privacy Policy</a></p>
-        <p>© 2024 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>© 2025 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // German footer template
@@ -244,7 +244,7 @@ async function buildSite() {
            <a href="https://scholar.google.com/citations?user=a2-nX-kAAAAJ" title="Google Scholar" aria-label="Sehen Sie meine Publikationen auf Google Scholar"><i class="fas fa-graduation-cap"></i></a> · 
            <a href="impressum-de.html">Impressum</a> · 
            <a href="datenschutz.html">Datenschutzerklärung</a></p>
-        <p>© 2024 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
+        <p>© 2025 Paul Sava · Design inspired by <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a></p>
     </footer>`;
 
     // Blog listing template
