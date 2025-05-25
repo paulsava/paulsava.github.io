@@ -10,7 +10,7 @@ Yup, it's me again! You probably weren't expecting this grand comeback after I s
 In my defense, I set myself up for failure: in February I went to Berlin for my first Berlinale (incredible experience, by the way), and naturally I planned to write about it. But when I sat down to actually write, I realized I had *so much* to say about all the films I'd seen. What started as a simple blog post idea snowballed into this overwhelming project where I felt I needed to cover dozens of films. And well, for a chronic procrastinator like me, that was basically a death sentence for the whole endeavor.
 
 <div class="xkcd-comic">
-    <img src="src/assets/images/9v5ajs.jpg" alt="">
+    <img src="../assets/images/9v5ajs.jpg" alt="">
 </div>
 
 

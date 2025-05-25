@@ -133,6 +133,7 @@ async function buildSite() {
         'assets/favicon/android-chrome-192x192.png',
         'assets/favicon/android-chrome-512x512.png',
         'assets/favicon/site.webmanifest',
+        'assets/images/9v5ajs.jpg',
         'impressum.html',
         'impressum-de.html',
         'privacy.html',
