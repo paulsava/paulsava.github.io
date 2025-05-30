@@ -1,7 +1,7 @@
 ---
 title: we should normalize talking about good jobs
 date: Fri, 30 May 2025
-description: thoughts on toxic work culture and what we've normalized as "normal"
+description: thoughts on toxic work culture and what we've normalized as normal
 ---
 
 **DISCLAIMER**: By all means, I am nothing more than a very, very, very lucky person. And I think it all comes down to... SURPRISE, SURPRISE... numerology. Yes, you heard that right. When I was born, one relative of mine said I was going to be a lucky person because I was born on 22.11.1999, because my birth date has a double (2s) and two triples (1s & 9s). I don't believe this is valid reasoning, but how could I ever contradict this? So I acknowledge that the following does not and can't apply to everyone, and I do think it's unfair.
