@@ -1,5 +1,5 @@
 ---
-title: we should normalize talking about good jobs
+title: what if we got work all wrong?
 date: Fri, 30 May 2025
 description: thoughts on toxic work culture and what we've normalized as normal
 ---
