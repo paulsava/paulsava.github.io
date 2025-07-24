@@ -18,21 +18,17 @@ I still can't get over the "too emotional" written next to what appeared to be a
 
 This whole experience forced me to adapt. I had to basically relearn ~~writing~~ *academic writing*.
 
----
-
 ## Enter the Post-ChatGPT Era
 
 When I had to write my Master's Thesis, this was no longer an issue. I already knew what was expected of me. However, a new problem appeared. The post-chatGPT era was already there.
 
-Nowadays, it's easy to write. You just have an idea and you tell chatGPT or Claude or Deepseek or Qwen or Gemini to *"make this sound nice. correct all the mistakes"*. You don't even need to spell the words right, the LLM already knows what you wanted to say. 
+Nowadays, it's easy to write. You just have an idea and you tell chatGPT or Claude or Deepseuk or Qwen or Gemini to *"make this sound nice. correct all the mistakes"*. You don't even need to spell the words right, the LLM already knows what you wanted to say. 
 
 And most of the time, it produces texts that are probably the best things you have ever seen. You read them and think, *"okay wow even if I tried, I could have not written it so well"*. Or maybe you don't, in which case, WHO ARE YOU? 
 
 Or maybe you feel bad for delegating the complete writing task to the AI so you scribble down some thoughts and instruct it to put everything together in a nice way. And correct all the mistakes. And make it read nice and have a nice flow. This makes you kind of feel better, because you tell yourself, *"okay, you know what, it did write the stuff for me, but I came up with the ideas"*. 
 
 Which might be true, but from my experience, it's probably not entirely true. Probably in order to come up with the initial thoughts you already had 2-3 chats with chatgpt brainstorming about the idea, asking questions, formalizing the concept and so on.
-
----
 
 I am already rambling on here, but the main thing I am trying to say is that once you start using LLMs for writing, and once you see how well it performs, you probably have already started debating ideas with it too. Probably you use it for debugging your code. Maybe you don't even google anymore, you just ask the LLM to do this for you. 
 
@@ -42,45 +38,43 @@ I don't really know how to explain this, but you stop to think about stuff. I st
 
 I didn't even think of trying to figure out what was wrong. I just delegated this to the LLM.
 
----
-
-## The Instagram vs Reality Problem
-
-If I had Claude clean up my first draft for the bachelor thesis, I would have probably ended up with a better thesis. One that probably would no longer have more red ink than black.
-
-But, at the same time, I would have learned less about the academic discourse. More than that, it probably would not feel like me anymore. It would have neat academic prose and proper transitions and would sound authoritative, but it would not be mine. It's basically the cognitive equivalent of Instagram vs reality.
+If I had Claude clean up my first draft for the bachelor thesis, I would have probably ended up with a better thesis. One that probably would no longer have more red ink than black. But, at the same time, I would have learned less about the academic discourse. More than that, it probably would not feel like me anymore. It would have neat academic prose and proper transitions and would sound authoritative, but it would not be mine.
 
 ## The Nature of Cognitive Offloading
+
+
 
 This blog post came up to be after I read this editorial in the Nature journal (https://www.nature.com/articles/s44222-025-00323-4) on the value of human-generated scientific writing in this post-GPT era. 
 
 The authors fear that we are indeed delegating more writing to LLMs and this does not only change the way we communicate and read stuff on the internet (like how we now have a feeling of whether an article was written by AI based on whether it uses "delve"), but also how we think.
 
-In my opinion, we are in the middle of something that we don't really understand, let's call it cognitive offloading, and we do not seem to be capable of recognizing what we are indeed giving up.
+In my opinion, we are in the middle of something that we don't really understand, let's call it **cognitive offloading**, and we do not seem to be capable of recognizing what we are indeed giving up.
 
 ## Building Mental Models Through Struggle
 
-I have studied computer science. I work in ML & IT Security. For the best part of my week, I write code or work with code. And at some point, I realized that I have become so dependent on Coding Assistants that whenever I had to debug something in my code, I would just copy paste it in ChatGPT and ask "what's this". I would not even think about trying to figure out what went wrong. That thought did not even appear in my head. But luckily, I recognized this behavior and I am working on fixing it. Not because using coding assistants does not work, it probably works better and much more efficiently than I can. 
+I have studied computer science. I work in ML & IT Security. For the best part of my week, I write code or work with code. And at some point, I realized that I have become so dependent on Coding Assistants that whenever I had to debug something in my code, I would just copy paste it in ChatGPT and ask "what's this". 
 
-But the fact is, manual debugging forces you to build causal models. *If the error is here, the root cause is probably there.* 
+I would not even think about trying to figure out what went wrong. That thought did not even appear in my head. But luckily, I recognized this behavior and I am working on fixing it. Not because using coding assistants does not work, it probably works better and much more efficiently than I can. 
 
-You start to learn various patterns and understand failure modes better. 
+But the fact is, **manual debugging forces you to build causal models**. *If the error is here, the root cause is probably there.* You start to learn various patterns and understand failure modes better. 
 
 When you outsource this to an AI, you get the fix but miss the learning. Just like in the case of my Bachelor thesis, but luckily for me, there was no chatgpt back then.
 
 It's the difference between knowing that 4\*3 is 12 because you memorized it and understanding that 4\*3 is 4 + 4 + 4, i.e., multiplication is just iterated addition. Both variants get you the answer, but one builds mathematical reasoning.
 
-And this is very important, because expertise is not about knowing facts, it's about having the right mental models to generate insights.
+And this is very important, because **expertise is not about knowing facts, it's about having the right mental models to generate insights**.
 
 And since I just started playing chess more often, I will try to make an analogy with chess grandmasters. When a GM looks at a given board, they probably don't see individual pieces, they see patterns, threats, developments, all of which appear after years and years of practice. This practice was never about learning moves, this occurs as a side effect, but it's about building the cognitive architecture that makes pattern recognition automatic.
 
 ## The Paradox of Productive Struggle
 
-This is why I believe that we are now finding ourselves in a very difficult position. Let's call it "The Paradox of Productive Struggle". 
+This is why I believe that we are now finding ourselves in a very difficult position. Let's call it **"The Paradox of Productive Struggle"**. 
 
 Modern AI tools are so damn good, that they eliminate productive struggle without us even realizing it. In theory, learning is always a friction-based process. It happens when we are at the edge of our abilities, outside of our comfort zone, when we are working hard enough to make mistakes but not hard enough to be overwhelmed. This is the zone where our neural pathways become stronger and mental models start to appear. If you do this long enough, you end up getting better at that task. 
 
-But LLMs are frictionless. They give you the answer on a platter before you even have had time to struggle with the question. From a user perspective, this is fantastic. I can fix my bike, without even understanding what I am actually doing. I just send pics of the broken part and follow what ChatGPT tells me. If that sounded too specific, don't ask me how I know this. From a cognitive perspective, this is bad.
+But **LLMs are frictionless**. They give you the answer on a platter before you even have had time to struggle with the question. From a user perspective, this is fantastic. I can fix my bike, without even understanding what I am actually doing. I just send pics of the broken part and follow what ChatGPT tells me. If that sounded too specific, don't ask me how I know this. 
+
+From a cognitive perspective, this is bad.
 
 ## The Calculator Analogy
 
@@ -99,8 +93,6 @@ To debatably harmful, like:
 
 And apart from this, there is an enormous gray area in between where these boundaries are not that obvious.
 
----
-
 ## What's the Solution?
 
 So what's the solution? I really don't know. 
@@ -113,8 +105,6 @@ However, it's easy to say, *delegate the execution, preserve the reasoning*. In 
 
 But perhaps most importantly, **we need to get better at recognizing when we are crossing the line from tool use to tool dependence**.
 
----
-
 ## The Real Issue: Wrong Metrics
 
 This brings me to what I think is the real issue.
@@ -123,11 +113,7 @@ This brings me to what I think is the real issue.
 
 The process of struggling with a problem, making mistakes, and figuring things out is also valuable, not just for the solution it produces, but for the cognitive changes it triggers.
 
-If we lose the ability to think through complex problems independently, we don't just become dependent on AI, we become less capable of the creative, integrative reasoning that the AIs still can't replicate. 
-
-We risk creating a world where humans become supervisors of AI systems they no longer truly understand.
-
----
+If we lose the ability to think through complex problems independently, we don't just become dependent on AI, we become less capable of the creative, integrative reasoning that the AIs still can't replicate. We risk creating a world where humans become supervisors of AI systems they no longer truly understand.
 
 ## The Ironic Trap
 
@@ -136,7 +122,5 @@ And this is ironic, right?
 **The very cognitive capabilities that let us build these remarkable AI systems might be the ones we are actively undermining by using them.** 
 
 Which means, we are in danger of creating tools that make us less capable of creating the next generation of tools.
-
----
 
 So maybe the question isn't whether AI will replace humans, but whether we'll accidentally automate away the cognitive processes that make human intelligence worth preserving in the first place.
