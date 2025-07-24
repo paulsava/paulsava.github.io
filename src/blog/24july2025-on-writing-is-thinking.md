@@ -1,5 +1,5 @@
 ---
-title: on 'writing is thinking'
+title: on writing is thinking
 date: Thu, 24 July 2025
 description: some thoughts on human-generated writing in the post-GPT era
 ---
