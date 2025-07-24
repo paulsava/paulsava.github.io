@@ -11,7 +11,7 @@ In any case, my point is that it was very hard for me to write in this new, shor
 
 My first draft, which of course needed to be saved with double spacing so that JP could write comments between the lines on his Remarkable tablet (because that's who JP is) instead of just adding comments to the shared Overleaf project, was more red than black.
 
-I still can't get over the "too emotional" written next to what appeared to be almost an entire red page, with all but a few lines crossed-out completely in red ink. ==🔴~~Just like this but imagine half of the page.~~==
+I still can't get over the "too emotional" written next to what appeared to be almost an entire red page, with all but a few lines crossed-out completely in red ink. ~~Just like this but imagine half of the page.~~
 
 This whole experience forced me to adapt. I had to basically relearn ~~writing~~ *academic writing*.
 
