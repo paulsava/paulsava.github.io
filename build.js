@@ -631,31 +631,21 @@ async function buildSite() {
 
     <main>
         <section id="intro">
-            <p>Hey there! I'm Paul, and you've just stumbled upon my little corner of the internet.</p>
-            <p>This site isn't trying to win any design awards - it's just a simple space where I share my work, thoughts, and the things that keep me busy.</p>
+            <p>so you've stumbled upon my little corner of the internet. congrats.</p>
         </section>
 
-        <section id="what-i-do">
-            <h2>What I Do</h2>
-            <p>Right now, I'm diving deep into AI research at <a href="https://www.aisec.fraunhofer.de/">Fraunhofer AISEC</a> while working on my PhD at <a href="https://www.tum.de/">TUM</a> with <a href="https://www.sec.in.tum.de/i20/people/claudia-eckert">Prof. Dr. Claudia Eckert</a>. I spend most of my time thinking about:</p>
-            <ul>
-                <li>→ Making large language models more secure (and figuring out when they're not)</li>
-                <li>→ Teaching AI agents to be autonomous (but not too autonomous)</li>
-                <li>→ Keeping machine learning private (because some secrets are worth keeping)</li>
-                <li>→ Finding ways to break AI systems (so we can make them stronger)</li>
-            </ul>
+        <section id="about-me">
+            <h2>About me</h2>
+            <p>i am paul, though most of my friends call me andrei, which is basically my second name. but when i came to study in Munich, i found it was easier for people to call me paul, so i sticked to that.</p>
+            <p>I am currently working as a research scientist at Fraunhofer AISEC in the Cognitive Security Technologies, and i am a phd student at TU Munich under Prof. Eckert.</p>
+            <p>I work with Large Language Models, and explore how we can use them for security, while in my research i try to focus on the security of llms. so on one hand, security with llms, and on the other, security of llms.</p>
+            <p>But this was not always the case, i started with adversarial machine learning, with a focus on phyiscal adversarial examples, did some synthetic data generation in the meantime, and ended up doing what i do now.</p>
         </section>
 
-        <section id="background">
-            <h2>My Background</h2>
-            <p>I spent my university years at TUM, getting both my Bachelor's and Master's there. While my main focus was on ML and AI Security, I also dove into High Performance and Quantum Computing. I started at Fraunhofer AISEC as a student assistant in 2021, and after finishing my Master's in 2024, I joined the team full-time.</p>
-        </section>
-
-        <section id="beyond">
-            <h2>Beyond the Code</h2>
-            <p>When I'm not doing research, I like to mess around with coffee brewing. It's become a bit of a hobby - trying different beans, tweaking recipes, that kind of thing. Maybe I'll open a small coffee shop someday, who knows.</p>
-            <p>Got a few projects I want to get into - building an aeroponic setup, getting into woodworking, and playing around with 3D printing. Also picked up crocheting recently, which is surprisingly chill.</p>
-            <p>In my downtime, I dig through obscure movie collections and hunt for underground music. Always fun to find something different that most people haven't heard of.</p>
+        <section id="about-site">
+            <h2>About this site</h2>
+            <p>basically the whole idea of this website is that i needed a place where i can write stuff, and also give free access to my papers which were unfortunately under paywall.</p>
+            <p>So there are three sections here. publications, which is quite clear i think, projects, where i want to write longer things about weird stuff that i do, and blog, where you guessed t, i write random stuff.</p>
         </section>
     </main>
 
